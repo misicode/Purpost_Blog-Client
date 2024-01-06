@@ -8,6 +8,9 @@ button {
     transition: all 300ms ease-out;
   }
 }
+section {
+  padding: 3rem 4rem;
+}
 .btn-cancel {
   @apply bg-slate-200;
   margin-right: .5rem;
@@ -22,4 +25,17 @@ button {
   &:hover {
     @apply bg-indigo-500;
   }
+}
+.card {
+  @apply bg-white border-2 border-indigo-100 border-solid;
+  padding: 2rem;
+}
+.input-item {
+  @apply block border-0 focus:outline-0 rounded text-slate-700 text-xss;
+  padding: .5rem .625rem;
+  width: 100%;
+}
+.input-item-box {
+  @apply border-2 border-slate-200 border-solid focus-within:border-indigo-700 rounded;
+  margin-top: .5rem;
 }
