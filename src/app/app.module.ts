@@ -20,6 +20,6 @@ import { HeaderComponent } from "./layouts/content-layout/header/header.componen
     AppRoutingModule
   ],
   providers: [],
-  bootstrap: [AppComponent],
+  bootstrap: [ AppComponent ],
 })
 export class AppModule {}

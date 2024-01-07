@@ -1,0 +1,28 @@
+<section class="gap-y-10 grid">
+  @for (news of [
+    {id: 1, url: "", title: "Hola", body: "Blahblahblah", username: "Misicode", createdAt: "12-01-2021" }
+  ]; track news.id) {
+    <div class="before:bg-indigo-700 before:rounded-[2rem] card hover:border-2 hover:border-indigo-500 hover:border-solid overflow-hidden pr-16 relative z-0">
+      <a>
+        <div>
+          <div>
+            <img th:src="${news.image.getUrl()}"  th:alt="${news.image.getName()}"/>
+          </div>
+          <div class="card-news-info">
+            <h3 class="mb-3">{{ news.title }}</h3>
+            <p class="mb-4 overflow-hidden text-slate-600 text-sms">
+              {{ news.body }}
+            </p>
+            <div class="card-news-extra text-right text-slate-600 text-xss">
+              <p class="font-medium">{{ news.username }}</p>
+              <p class="">{{ news.createdAt }}</p>
+            </div>
+          </div>
+        </div>
+        <div class="absolute bg-indigo-700 flex h-10 items-center justify-center overflow-hidden right-0 rounded-bl-[2rem] rounded-tr-bl top-0 w-10 card-news-corner">
+          <div class="mr-[-.25rem] mt-[-.25rem] text-white">→</div>
+        </div>
+      </a>
+    </div>
+  }
+</section>
