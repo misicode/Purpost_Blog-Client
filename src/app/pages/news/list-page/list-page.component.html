@@ -1,12 +1,10 @@
 <section class="gap-y-10 grid">
-  @for (news of [
-    {id: 1, url: "", title: "Hola", body: "Blahblahblah", username: "Misicode", createdAt: "12-01-2021" }
-  ]; track news.id) {
+  @for (news of listNews; track news.idNews) {
     <div class="before:bg-indigo-700 before:rounded-[2rem] card hover:border-2 hover:border-indigo-500 hover:border-solid overflow-hidden pr-16 relative z-0">
       <a>
         <div>
           <div>
-            <img th:src="${news.image.getUrl()}"  th:alt="${news.image.getName()}"/>
+            <img src="{{ news.image.url }}"  alt="{{ news.image.name }}"/>
           </div>
           <div class="card-news-info">
             <h3 class="mb-3">{{ news.title }}</h3>
@@ -14,7 +12,7 @@
               {{ news.body }}
             </p>
             <div class="card-news-extra text-right text-slate-600 text-xss">
-              <p class="font-medium">{{ news.username }}</p>
+              <p class="font-medium">{{ news.user.names }}</p>
               <p class="">{{ news.createdAt }}</p>
             </div>
           </div>

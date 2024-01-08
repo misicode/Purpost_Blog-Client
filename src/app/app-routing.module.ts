@@ -16,8 +16,13 @@ const routes: Routes = [
         path: "news",
         loadChildren: () => import("./pages/news/news.module").then(m => m.NewsModule)
       },
+      {
+        path: "",
+        redirectTo: "news",
+        pathMatch: "full",
+      }
     ]
-  }
+  },
 ];
 
 @NgModule({
