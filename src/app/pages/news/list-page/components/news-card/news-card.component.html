@@ -1,17 +1,27 @@
 <div class="before:bg-indigo-700 card hover:border-2 hover:border-indigo-500 hover:border-solid overflow-hidden !pr-16 relative z-0">
-  <a>
+  <a [routerLink]="news.idNews">
     <div class="gap-x-8 grid grid-cols-[1fr_2fr]">
       <div class="relative">
-        <img src="{{ news.image.url }}"  alt="{{ news.image.name }}" class="absolute h-full object-center object-cover w-full" />
+        <img
+          [src]="news.image.url"
+          [alt]="news.image.name"
+          class="absolute h-full object-center object-cover w-full"
+        />
       </div>
       <div>
-        <h3 class="mb-3">{{ news.title }}</h3>
+        <h3 class="mb-3">
+          {{ news.title }}
+        </h3>
         <p class="card-news-body mb-4 overflow-hidden text-slate-600 text-sms">
           {{ news.body }}
         </p>
         <div class="text-right text-slate-600 text-xss">
-          <p class="font-medium">{{ news.user.names }}</p>
-          <p>{{ news.createdAt | date:"MMMM d, y" }}</p>
+          <p class="font-medium">
+            {{ news.user.names }}
+          </p>
+          <p>
+            {{ news.createdAt | date:"MMMM d, y" }}
+          </p>
         </div>
       </div>
     </div>

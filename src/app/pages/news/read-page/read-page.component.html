@@ -1,0 +1,26 @@
+<section>
+  @if (news) {
+    <div class="card card-news-info">
+      <h3>
+        {{ news.title }}
+      </h3>
+      <div>
+        <img 
+          [src]="news.image.url"
+          [alt]="news.image.name"
+        />
+      </div>
+      <div>
+        <p>
+          {{ news.user.names }}
+        </p>
+        <p>
+          {{ news.createdAt }}
+        </p>
+      </div>
+      <p>
+        {{ news.body }}
+      </p>
+    </div>
+  }
+</section>
