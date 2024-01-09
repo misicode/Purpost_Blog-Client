@@ -7,6 +7,6 @@ export interface News {
   body: string,
   user: User,
   image: Image,
-  createdAt: string,
+  createdAt: Date,
   active: boolean,
 }

@@ -13,7 +13,7 @@
             </p>
             <div class="text-right text-slate-600 text-xss">
               <p class="font-medium">{{ news.user.names }}</p>
-              <p>{{ news.createdAt }}</p>
+              <p>{{ news.createdAt | date:"MMMM d, y" }}</p>
             </div>
           </div>
         </div>
