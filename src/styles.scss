@@ -27,7 +27,7 @@ section {
   }
 }
 .card {
-  @apply bg-white border-2 border-indigo-100 border-solid;
+  @apply bg-white border-2 border-indigo-100 border-solid rounded-lg;
   padding: 2rem;
 }
 .input-item {

@@ -1,0 +1,30 @@
+.card {
+  &:before {
+    border-radius: 2rem;
+    content: "";
+    height: 2rem;
+    position: absolute;
+    right: -1rem;
+    top: -1rem;
+    transform: scale(1);
+    transform-origin: 50% 50%;
+    transition: transform 0.25s ease-out;
+    width: 2rem;
+    z-index: -1;
+  }
+  &:hover {
+    cursor: pointer;
+    transition: all 300ms ease-out;
+    h3 {
+      @apply text-indigo-700;
+    }
+  }
+  &:hover:before {
+    transform: scale(4.5);
+  }
+}
+.card-news-body {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 6;
+}
