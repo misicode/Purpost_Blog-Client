@@ -6,6 +6,11 @@ module.exports = {
   ],
   theme: {
     extend: {
+      colors: {
+        "indigo": {
+          75: "#E7ECFF",
+        }
+      },
       fontSize: {
         xsvs: ".8rem",
         xss: ".85rem",

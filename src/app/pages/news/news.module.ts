@@ -1,5 +1,6 @@
 import { NgModule } from "@angular/core";
 import { CommonModule } from "@angular/common";
+import { NgxSkeletonLoaderModule } from "ngx-skeleton-loader";
 
 import { ListPageComponent } from "./list-page/list-page.component";
 import { NewsCardComponent } from "./list-page/components/news-card/news-card.component";
@@ -15,7 +16,8 @@ import { NewsRoutingModule } from "./news-routing.module";
   ],
   imports: [
     CommonModule,
-    NewsRoutingModule
+    NewsRoutingModule,
+    NgxSkeletonLoaderModule,
   ],
 })
 export class NewsModule {}

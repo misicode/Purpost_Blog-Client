@@ -11,10 +11,12 @@ import { NewsService } from "../../../core/services/news.service";
 export class ListPageComponent implements OnInit {
   public listNews: News[] = [];
 
-  constructor( private newsService: NewsService ) {}
+  constructor(
+    private newsService: NewsService
+  ) {}
 
   ngOnInit(): void {
     this.newsService.getNews()
-      .subscribe(news => this.listNews = news);
+      .subscribe((news: News[]) => this.listNews = news);
   }
 }
