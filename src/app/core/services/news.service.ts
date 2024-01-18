@@ -2,8 +2,9 @@ import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { catchError, Observable, of } from "rxjs";
 
-import { News } from "../interfaces/news.interface";
 import { environment } from "../../../environments/environment";
+
+import { News } from "../interfaces/news.interface";
 
 @Injectable({
   providedIn: "root",
