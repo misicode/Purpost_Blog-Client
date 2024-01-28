@@ -3,20 +3,18 @@
     <list-news-card [news]="news"></list-news-card>
   } @empty {
     @for (_ of [].constructor(2); track $index) {
-      <div class="bg-white gap-x-8 grid grid-cols-[1fr_2fr] h-[18.5rem] p-8 !pr-16 rounded-lg">
+      <div class="card gap-x-8 grid grid-cols-[1fr_2fr] h-[18.5rem] !pr-16">
         <ngx-skeleton-loader
           count="1"
-          appearance="circle"
           [theme]="{
-            'border-radius': '0',
+            'background-color': '#eef2ff',
             height: '100%',
-            margin: '0',
-            width: '100%'
           }"
         ></ngx-skeleton-loader>
         <ngx-skeleton-loader
           count="1"
           [theme]="{
+            'background-color': '#eef2ff',
             height: '100%',
           }"
         ></ngx-skeleton-loader>

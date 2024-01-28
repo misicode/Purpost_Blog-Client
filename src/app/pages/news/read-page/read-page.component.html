@@ -1,24 +1,25 @@
 <section>
   @if (news) {
-    <div class="card card-news-info">
-      <h3>
+    <div class="card !px-14 !py-10">
+      <h3 class="font-medium pb-8 text-xl text-center text-indigo-800">
         {{ news.title }}
       </h3>
-      <div>
-        <img 
+      <div class="border-b-2 border-indigo-100 border-solid pb-8">
+        <img
+          class="block max-w-[80%] mx-auto"
           [src]="news.image.url"
           [alt]="news.image.name"
         />
       </div>
-      <div>
+      <div class="flex justify-between mb-8 mt-4 text-xss">
         <p>
-          {{ news.user.names }}
+          {{ news.user.names + " " + news.user.surnames }}
         </p>
         <p>
-          {{ news.createdAt }}
+          {{ news.createdAt | date:"M/d/yy, h:mm a" }}
         </p>
       </div>
-      <p>
+      <p class="whitespace-pre-line">
         {{ news.body }}
       </p>
     </div>

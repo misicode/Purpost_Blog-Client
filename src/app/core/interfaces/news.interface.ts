@@ -8,5 +8,6 @@ export interface News {
   user: User,
   image: Image,
   createdAt: Date,
+  updatedAt: Date,
   active: boolean,
 }

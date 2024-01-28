@@ -12,7 +12,7 @@ import { NewsRoutingModule } from "./news-routing.module";
   declarations: [
     ListPageComponent,
     NewsCardComponent,
-    ReadPageComponent
+    ReadPageComponent,
   ],
   imports: [
     CommonModule,
