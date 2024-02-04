@@ -1,12 +1,13 @@
 import { HttpClient } from "@angular/common/http";
 import { Injectable, computed, signal } from "@angular/core";
-import { Observable, tap } from "rxjs";
+import { Observable, map, tap } from "rxjs";
 
 import { environment } from "../../../environments/environment";
 
 import { AuthStatus } from "../enums/auth.enum";
-import { User } from "../interfaces/user.interface";
 
+import { LoginResponse } from "../interfaces/login-response.interface";
+import { User } from "../interfaces/user.interface";
 
 @Injectable({
   providedIn: "root",
@@ -24,14 +25,16 @@ export class AuthService {
 
   login(email: string, password: string): Observable<boolean> {
     return this.httpClient
-      .post<User>(`${ this.serverUrl }/api/auth/login`, {email, password})
+      .post<LoginResponse>(`${ this.serverUrl }/api/auth/login`, { email, password } )
       .pipe(
-        tap( ({ user, token }) =>
+        tap( ({ token, user }) => {
           this._userAuthenticated.set(user);
           this._authStatus.set(AuthStatus.authenticated);
 
           localStorage.setItem("token", token);
-        )
+          console.log({ user, token })
+        }),
+        map( () => true )
       );
   }
 }

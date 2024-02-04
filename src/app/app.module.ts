@@ -9,7 +9,6 @@ import { ContentLayoutComponent } from "./layouts/content-layout/content-layout.
 import { FooterComponent } from "./layouts/content-layout/footer/footer.component";
 import { HeaderComponent } from "./layouts/content-layout/header/header.component";
 
-
 @NgModule({
   declarations: [
     AppComponent,
