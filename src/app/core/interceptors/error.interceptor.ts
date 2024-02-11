@@ -14,7 +14,9 @@ export class ErrorInterceptorService implements HttpInterceptor {
         .pipe(
           catchError((err) => {
             this.toastrService.error(err.error.message);
+
             console.error(err.error);
+            
             return of(err);
           })
         );

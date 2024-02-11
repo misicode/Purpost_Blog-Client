@@ -21,8 +21,7 @@ export class LoginPageComponent {
     
     this.authService.login(email, password)
       .subscribe({
-        next: () => console.log("Todo bien!"),
-        error: err => console.log(err)
+        next: () => console.log("Todo bien!")
       });
   }
 }

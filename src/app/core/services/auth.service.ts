@@ -1,6 +1,6 @@
 import { HttpClient } from "@angular/common/http";
 import { Injectable, computed, signal } from "@angular/core";
-import { Observable, catchError, map, of, tap, throwError } from "rxjs";
+import { Observable, map, tap } from "rxjs";
 
 import { environment } from "../../../environments/environment";
 
