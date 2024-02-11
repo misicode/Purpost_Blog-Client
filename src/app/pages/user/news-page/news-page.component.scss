@@ -1,0 +1,12 @@
+table th {
+  @apply px-4 py-3;
+}
+table td {
+  @apply border-t border-slate-300 border-solid px-4 py-2 text-center text-smvs;
+}
+table button {
+  @apply bg-rose-500 hover:bg-rose-400 px-2.5 py-2 text-white;
+}
+table button svg {
+  @apply h-4 w-4;
+}

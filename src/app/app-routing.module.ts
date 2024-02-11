@@ -17,6 +17,10 @@ const routes: Routes = [
         loadChildren: () => import("./pages/news/news.module").then(m => m.NewsModule)
       },
       {
+        path: "user",
+        loadChildren: () => import("./pages/user/user.module").then(m => m.UserModule)
+      },
+      {
         path: "",
         redirectTo: "news",
         pathMatch: "full",
