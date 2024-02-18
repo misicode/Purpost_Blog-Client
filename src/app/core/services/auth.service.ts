@@ -1,6 +1,6 @@
-import { HttpClient } from "@angular/common/http";
+import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { Injectable, computed, signal } from "@angular/core";
-import { Observable, map, tap } from "rxjs";
+import { Observable, catchError, map, of, tap } from "rxjs";
 
 import { environment } from "../../../environments/environment";
 
@@ -15,26 +15,58 @@ import { User } from "../interfaces/user.interface";
 export class AuthService {
   private readonly serverUrl: string = environment.serverUrl;
 
-  private _userAuthenticated = signal<User | null>(null);
   private _authStatus = signal<AuthStatus>(AuthStatus.checking);
+  private _userAuthenticated = signal<User | null>(null);
+  
+  public authStatus = computed(() => this._authStatus());
+  public userAuthenticated = computed(() => this._userAuthenticated());
 
-  public userAuthenticated = computed(() => this._userAuthenticated);
-  public authStatus = computed(() => this._authStatus);
+  constructor(private httpClient: HttpClient) {
+    this.checkAuthStatus().subscribe();
+  }
 
-  constructor(private httpClient: HttpClient) {}
+  private setAuthentication(user: User, token: string): boolean {
+    this._authStatus.set(AuthStatus.authenticated);
+    this._userAuthenticated.set(user);
+    
+    localStorage.setItem("token", token);
+
+    return true;
+  }
+
+  checkAuthStatus(): Observable<boolean> {
+    const token = localStorage.getItem("token");
+
+    if(!token) {
+      this.logout();
+      return of(false);
+    }
+
+    const headers = new HttpHeaders().set("Authorization", `Bearer ${ token }`);
+
+    return this.httpClient
+      .get<LoginResponse>(`${ this.serverUrl }/api/auth/token`, { headers })
+      .pipe(
+        map( ({ user, token }) => this.setAuthentication(user, token) ),
+        catchError(() => {
+          this.logout();
+          return of(false);
+        })
+      );
+  }
 
   login(email: string, password: string): Observable<boolean> {
     return this.httpClient
       .post<LoginResponse>(`${ this.serverUrl }/api/auth/login`, { email, password } )
       .pipe(
-        tap( ({ token, user }) => {
-          this._userAuthenticated.set(user);
-          this._authStatus.set(AuthStatus.authenticated);
-
-          localStorage.setItem("token", token);
-          console.log({ user, token })
-        }),
-        map( () => true )
+        map( ({ user, token }) => this.setAuthentication(user, token) )
       );
+  }
+
+  logout() {
+    this._authStatus.set(AuthStatus.notAuthenticated);
+    this._userAuthenticated.set(null);
+
+    localStorage.removeItem("token");
   }
 }

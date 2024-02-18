@@ -1,5 +1,6 @@
 import { Component, inject } from "@angular/core";
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
+import { Router } from "@angular/router";
 
 import { AuthService } from "../../../core/services/auth.service";
 
@@ -10,6 +11,9 @@ import { AuthService } from "../../../core/services/auth.service";
 export class LoginPageComponent {
   private authService = inject(AuthService);
   private formBuilder = inject(FormBuilder);
+  private router = inject(Router);
+
+  public loading: boolean = false;
 
   public loginForm: FormGroup = this.formBuilder.group({
     email: ["", [Validators.required, Validators.email]],
@@ -18,10 +22,14 @@ export class LoginPageComponent {
 
   login() {
     const { email, password } = this.loginForm.value;
+    this.loading = true;
     
     this.authService.login(email, password)
       .subscribe({
-        next: () => console.log("Todo bien!")
+        next: () => {
+          this.loading = false;
+          this.router.navigateByUrl("/user/news");
+        }
       });
   }
 }
