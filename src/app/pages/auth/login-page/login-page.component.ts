@@ -29,6 +29,9 @@ export class LoginPageComponent {
         next: () => {
           this.loading = false;
           this.router.navigateByUrl("/user/news");
+        },
+        error: (err) => {
+          this.loading = false;
         }
       });
   }

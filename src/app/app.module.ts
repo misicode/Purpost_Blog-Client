@@ -12,6 +12,7 @@ import { FooterComponent } from "./layouts/content-layout/footer/footer.componen
 import { HeaderComponent } from "./layouts/content-layout/header/header.component";
 
 import { ErrorInterceptorService } from "./core/interceptors/error.interceptor";
+import { TokenInterceptorService } from "./core/interceptors/token.interceptor";
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import { ErrorInterceptorService } from "./core/interceptors/error.interceptor";
     ToastrModule.forRoot(),
   ],
   providers: [
-    { multi: true, provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptorService }
+    { multi: true, provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptorService },
+    { multi: true, provide: HTTP_INTERCEPTORS, useClass: TokenInterceptorService },
   ],
   bootstrap: [ AppComponent ],
 })
