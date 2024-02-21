@@ -26,7 +26,9 @@ import { TokenInterceptorService } from "./core/interceptors/token.interceptor";
     BrowserAnimationsModule,
     BrowserModule,
     HttpClientModule,
-    ToastrModule.forRoot(),
+    ToastrModule.forRoot({
+      timeOut: 2500,
+    }),
   ],
   providers: [
     { multi: true, provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptorService },

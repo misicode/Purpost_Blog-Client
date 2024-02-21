@@ -13,7 +13,11 @@ export class ErrorInterceptorService implements HttpInterceptor {
     return next.handle(req)
         .pipe(
           catchError((err) => {
-            this.toastrService.error(err.error.message);
+            if(err.error instanceof ProgressEvent) {
+              this.toastrService.error("Error de conectividad");
+            } else {
+              this.toastrService.error(err.error.message);
+            }
 
             console.error(err.error);
             
