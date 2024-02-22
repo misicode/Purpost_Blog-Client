@@ -1,7 +1,7 @@
 import { HttpEvent, HttpHandler, HttpInterceptor, HttpRequest } from "@angular/common/http";
 import { Injectable, inject } from "@angular/core";
 import { ToastrService } from "ngx-toastr";
-import { Observable, catchError, of } from "rxjs";
+import { Observable, catchError } from "rxjs";
 
 @Injectable({
   providedIn: "root"

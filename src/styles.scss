@@ -37,6 +37,10 @@ section {
   @apply border-2 border-slate-200 border-solid focus-within:border-indigo-700 rounded;
   margin-top: .5rem;
 }
+.skeleton-loader {
+  display: block !important;
+  margin-bottom: 0 !important;
+}
 .toast-container {
   .ngx-toastr {
     border-radius: .4rem;

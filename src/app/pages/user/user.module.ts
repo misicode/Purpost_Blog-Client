@@ -1,5 +1,6 @@
 import { NgModule } from "@angular/core";
 import { CommonModule } from "@angular/common";
+import { NgxSkeletonLoaderModule } from "ngx-skeleton-loader";
 
 import { NewsPageComponent } from "./news-page/news-page.component";
 
@@ -11,7 +12,8 @@ import { UserRoutingModule } from "./user-routing.module";
   ],
   imports: [
     CommonModule,
-    UserRoutingModule
+    UserRoutingModule,
+    NgxSkeletonLoaderModule,
   ],
 })
 export class UserModule {}

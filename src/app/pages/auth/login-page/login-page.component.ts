@@ -30,7 +30,7 @@ export class LoginPageComponent {
           this.loading = false;
           this.router.navigateByUrl("/user/news");
         },
-        error: (err) => {
+        error: () => {
           this.loading = false;
         }
       });
