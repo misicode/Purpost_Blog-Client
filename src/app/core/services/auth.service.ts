@@ -12,17 +12,32 @@ import { User } from "../interfaces/user.interface";
 })
 export class AuthService {
   private _authStatus = new BehaviorSubject<boolean>(false);
-  private _authUser = new BehaviorSubject<User | null>(null);
+  private _authUser = new BehaviorSubject<LoginResponse | null>(null);
 
   private readonly serverUrl: string = environment.serverUrl;
 
-  constructor(private httpClient: HttpClient) { }
+  constructor(private httpClient: HttpClient) {
+    this.isAuthenticated();
+  }
+
+  private isAuthenticated() {
+    const isAuth = localStorage.getItem("sesion") || null;
+
+    if(!isAuth) {
+      this.logout();
+      return;
+    }
+
+    const { user, token } = JSON.parse(isAuth);
+    this._authStatus.next(true);
+    this._authUser.next({ user, token });
+  }
 
   private setAuthentication(user: User, token: string): boolean {
     this._authStatus.next(true);
-    this._authUser.next(user);
+    this._authUser.next({ user, token });
     
-    localStorage.setItem("token", token);
+    localStorage.setItem("sesion", JSON.stringify({ user, token }));
 
     return true;
   }
@@ -67,7 +82,7 @@ export class AuthService {
     return this._authStatus.asObservable();
   }
 
-  get authUser():Observable<User | null>{
+  get authUser():Observable<LoginResponse | null>{
     return this._authUser.asObservable();
   }
 }
