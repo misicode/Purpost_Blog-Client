@@ -29,6 +29,7 @@ export class AuthService {
     }
 
     const { user, token } = JSON.parse(isAuth);
+    
     this._authStatus.next(true);
     this._authUser.next({ user, token });
   }
@@ -75,7 +76,7 @@ export class AuthService {
     this._authStatus.next(false);
     this._authUser.next(null);
 
-    localStorage.removeItem("token");
+    localStorage.removeItem("sesion");
   }
 
   get authStatus(): Observable<boolean>{

@@ -4,17 +4,18 @@
       <span class="bg-indigo-700 rounded-lg text-white px-4 py-2">Egg</span>
       <span class="text-indigo-700 px-1.5">News</span>
     </a>
-    <div>
-      <a routerLink="./auth/login">
-        <button class="btn-cancel">Iniciar sesión</button>
-      </a>
-      <a routerLink="./auth/register">
-        <button class="btn-success">Registrarse</button>
-      </a>
-    </div>
-    @if (isAuthenticated) {
-      <div class="user-menu">
-        <div class="cursor-pointer h-9 overflow-hidden rounded-full w-9" id="user-dropdown-menu-btn">
+    @if (!isAuthenticated) {
+      <div>
+        <a routerLink="./auth/login">
+          <button class="btn-cancel">Iniciar sesión</button>
+        </a>
+        <a routerLink="./auth/register">
+          <button class="btn-success">Registrarse</button>
+        </a>
+      </div>
+    } @else {
+      <div class="group relative">
+        <div class="cursor-pointer h-9 overflow-hidden rounded-full w-9">
             <svg
               class="bg-indigo-100 h-full text-indigo-700 w-full"
               fill="currentColor"
@@ -23,10 +24,17 @@
               <path d="M24 20.993V24H0v-2.996A14.977 14.977 0 0112.004 15c4.904 0 9.26 2.354 11.996 5.993zM16.002 8.999a4 4 0 11-8 0 4 4 0 018 0z"></path>
             </svg>
         </div>
-        <div class="bg-indigo-50 mt-2 rounded-lg w-40" id="user-dropdown-menu">
-          <a href="#">Mi perfil</a>
-          <a href="#">Mis noticias</a>
-          <a href="#">Cerrar sesión</a>
+        <div class="h-2"></div>
+        <div class="absolute bg-indigo-50 group-hover:visible invisible right-0 rounded-lg text-smvs w-40">
+          <a routerLink="./user/profile" class="block duration-150 hover:bg-indigo-700 hover:rounded-t-lg hover:text-white px-4 py-3 transition-colors">
+            Mi perfil
+          </a>
+          <a routerLink="./user/news" class="block duration-150 hover:bg-indigo-700 hover:text-white px-4 py-3 transition-colors">
+            Mis noticias
+          </a>
+          <a (click)="logout()" routerLink="./news" class="block duration-150 hover:bg-indigo-700 hover:rounded-b-lg hover:text-white px-4 py-3 transition-colors">
+            Cerrar sesión
+          </a>
         </div>
       </div>
     }
