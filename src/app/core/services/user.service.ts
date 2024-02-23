@@ -20,6 +20,11 @@ export class UserService {
       .get<UserProfile>(`${ this.serverUrl }/api/user/profile`);
   }
 
+  editProfile(user: UserProfile): Observable<UserProfile> {
+    return this.httpClient
+      .put<UserProfile>(`${ this.serverUrl }/api/user/profile`, user);
+  }
+
   getNewsByUser(): Observable<News[]> {
     return this.httpClient
       .get<News[]>(`${ this.serverUrl }/api/user/news`);
