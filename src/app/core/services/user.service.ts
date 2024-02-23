@@ -5,6 +5,7 @@ import { Observable } from "rxjs";
 import { environment } from "../../../environments/environment";
 
 import { News } from "../interfaces/news.interface";
+import { UserProfile } from "../interfaces/user.interface";
 
 @Injectable({
   providedIn: "root",
@@ -13,6 +14,11 @@ export class UserService {
   private serverUrl: string = environment.serverUrl;
   
   constructor(private httpClient: HttpClient) {}
+
+  getProfile(): Observable<UserProfile> {
+    return this.httpClient
+      .get<UserProfile>(`${ this.serverUrl }/api/user/profile`);
+  }
 
   getNewsByUser(): Observable<News[]> {
     return this.httpClient

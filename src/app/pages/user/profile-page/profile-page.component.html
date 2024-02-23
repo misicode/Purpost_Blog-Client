@@ -1,0 +1,73 @@
+<div class="bg-indigo-700 px-16 py-4 text-sms text-white">
+  <h2>Mi Perfil</h2>
+</div>
+<div class="bg-white border-b-2 border-indigo-100 border-solid font-medium px-16 py-3 text-slate-700 text-xss">
+  Inicio / <a routerLink="/user/profile">Perfil</a>
+</div>
+<section>
+  <form
+    class="max-w-sm mx-auto"
+    [formGroup]="profileForm"
+  >
+    <div class="card gap-y-8 grid">
+      <div>
+        <label for="names">
+          Nombres
+        </label>
+        <div class="input-item-box">
+          <input
+            class="input-item"
+            formControlName="names"
+            id="names"
+            name="names"
+            required
+            type="text"
+          />
+        </div>
+      </div>
+      <div>
+        <label for="surnames">
+          Apellidos
+        </label>
+        <div class="input-item-box">
+          <input
+            class="input-item"
+            formControlName="surnames"
+            id="surnames"
+            name="surnames"
+            required
+            type="text"
+          />
+        </div>
+      </div>
+      <div>
+        <label for="email">
+          Correo
+        </label>
+        <div class="input-item-box">
+          <input
+            class="input-item"
+            formControlName="email"
+            id="email"
+            name="email"
+            type="email"
+          />
+        </div>
+      </div>
+    </div>
+    <div class="mt-6 text-right">
+      @if (!editable) {
+        <button (click)="onEditable()" type="button" class="btn-success">
+          Editar
+        </button>
+      } @else {
+        <button (click)="offEditable()" type="button" class="btn-cancel">
+          Cancelar
+        </button>
+        <button type="submit" class="btn-success">
+          Guardar
+        </button>
+      }
+    </div>
+  </form>
+</section>

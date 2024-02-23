@@ -6,3 +6,9 @@ export interface User {
   surnames: string,
   role: Role,
 }
+
+export interface UserProfile {
+  email: string,
+  names: string,
+  surnames: string,
+}
