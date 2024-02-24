@@ -1,6 +1,7 @@
 import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { BehaviorSubject, Observable, catchError, map, of, tap } from "rxjs";
+import { jwtDecode } from "jwt-decode";
 
 import { environment } from "../../../environments/environment";
 
@@ -29,6 +30,15 @@ export class AuthService {
     }
 
     const { user, token } = JSON.parse(isAuth);
+
+    const decodedToken = jwtDecode(token);
+
+    const isExpired = Math.floor(new Date().getTime() / 1000) >= (decodedToken.exp || 0);
+    
+    if(isExpired) {
+      this.logout();
+      return;
+    }
     
     this._authStatus.next(true);
     this._authUser.next({ user, token });

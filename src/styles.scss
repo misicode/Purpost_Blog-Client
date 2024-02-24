@@ -12,10 +12,10 @@ section {
   padding: 3rem 4rem;
 }
 .btn-cancel {
-  @apply bg-slate-400;
+  @apply bg-slate-300;
   margin-right: .5rem;
   &:hover {
-    @apply bg-slate-300;
+    @apply bg-slate-200;
   }
 }
 .btn-success {
