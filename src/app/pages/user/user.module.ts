@@ -3,14 +3,16 @@ import { CommonModule } from "@angular/common";
 import { ReactiveFormsModule } from "@angular/forms";
 import { NgxSkeletonLoaderModule } from "ngx-skeleton-loader";
 
-import { NewsPageComponent } from "./news-page/news-page.component";
+import { CreateNewsPageComponent } from "./create-news-page/create-news-page.component";
+import { ListNewsPageComponent } from "./list-news-page/list-news-page.component";
 import { ProfilePageComponent } from "./profile-page/profile-page.component";
 
 import { UserRoutingModule } from "./user-routing.module";
 
 @NgModule({
   declarations: [
-    NewsPageComponent,
+    CreateNewsPageComponent,
+    ListNewsPageComponent,
     ProfilePageComponent,
   ],
   imports: [

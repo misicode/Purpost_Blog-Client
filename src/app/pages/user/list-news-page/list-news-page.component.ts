@@ -5,11 +5,11 @@ import { UserService } from "../../../core/services/user.service";
 import { News } from "../../../core/interfaces/news.interface";
 
 @Component({
-  selector: "user-news-page",
-  templateUrl: "./news-page.component.html",
-  styleUrl: "./news-page.component.scss",
+  selector: "user-list-news-page",
+  templateUrl: "./list-news-page.component.html",
+  styleUrl: "./list-news-page.component.scss",
 })
-export class NewsPageComponent implements OnInit {
+export class ListNewsPageComponent implements OnInit {
   public listNews: News[] = [];
 
   constructor(
