@@ -1,6 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 
-import { UserService } from "../../../core/services/user.service";
+import { NewsService } from "../../../core/services/news.service";
 
 import { News } from "../../../core/interfaces/news.interface";
 
@@ -13,11 +13,11 @@ export class ListNewsPageComponent implements OnInit {
   public listNews: News[] = [];
 
   constructor(
-    private userService: UserService
+    private newsService: NewsService
   ) {}
 
   ngOnInit(): void {
-    this.userService.getNewsByUser()
+    this.newsService.getNewsByUser()
       .subscribe((news: News[]) => this.listNews = news);
   }
 }

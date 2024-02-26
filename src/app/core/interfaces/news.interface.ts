@@ -11,3 +11,9 @@ export interface News {
   updatedAt: Date,
   active: boolean,
 }
+
+export interface NewsRequest {
+  title: string,
+  body: string,
+  image: File,
+}

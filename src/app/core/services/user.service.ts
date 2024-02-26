@@ -4,7 +4,6 @@ import { Observable } from "rxjs";
 
 import { environment } from "../../../environments/environment";
 
-import { News } from "../interfaces/news.interface";
 import { UserProfile } from "../interfaces/user.interface";
 
 @Injectable({
@@ -23,10 +22,5 @@ export class UserService {
   editProfile(user: UserProfile): Observable<UserProfile> {
     return this.httpClient
       .put<UserProfile>(`${ this.serverUrl }/api/user/profile`, user);
-  }
-
-  getNewsByUser(): Observable<News[]> {
-    return this.httpClient
-      .get<News[]>(`${ this.serverUrl }/api/user/news`);
   }
 }
