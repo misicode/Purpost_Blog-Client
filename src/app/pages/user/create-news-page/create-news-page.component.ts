@@ -1,5 +1,6 @@
 import { Component, inject } from "@angular/core";
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
+import { Router } from "@angular/router";
 import { ToastrService } from "ngx-toastr";
 
 import { NewsService } from "../../../core/services/news.service";
@@ -11,6 +12,7 @@ import { NewsService } from "../../../core/services/news.service";
 })
 export class CreateNewsPageComponent {
   private formBuilder = inject(FormBuilder);
+  private router = inject(Router);
   private toastrService = inject(ToastrService);
   
   public imageUrl: string = "";
@@ -40,6 +42,7 @@ export class CreateNewsPageComponent {
       .subscribe({
         next: (res) => {
           this.toastrService.success("La noticia se creó exitosamente");
+          this.router.navigateByUrl("/user/news");
         }
       });
   }

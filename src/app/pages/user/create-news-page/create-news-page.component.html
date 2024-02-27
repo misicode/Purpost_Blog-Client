@@ -52,6 +52,7 @@
           <input
             (change)="onImageChange($event)"
             accept="image/jpeg, image/png"
+            class="sr-only"
             id="file-upload"
             name="file-upload"
             type="file"
@@ -75,7 +76,7 @@
           Cancelar
         </button>
       </a>
-      <button type="submit" class="btn-success">
+      <button [disabled]="newsForm.invalid" type="submit" class="btn-success disabled:bg-indigo-500">
         Guardar
       </button>
     </div>

@@ -33,7 +33,13 @@ export class NewsService {
   }
 
   createNews(news: NewsRequest): Observable<News> {
+    const formNewsData: FormData = new FormData();
+
+    formNewsData.append("title", news.title);
+    formNewsData.append("body", news.body);
+    formNewsData.append("image", news.image);
+
     return this.httpClient
-      .post<News>(`${this.serverUrl}/api/user/news`, news);
+      .post<News>(`${this.serverUrl}/api/user/news`, formNewsData);
   }
 }
