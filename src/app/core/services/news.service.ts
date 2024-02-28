@@ -42,4 +42,15 @@ export class NewsService {
     return this.httpClient
       .post<News>(`${this.serverUrl}/api/user/news`, formNewsData);
   }
+
+  updateNews(id: string, news: NewsRequest): Observable<News> {
+    const formNewsData: FormData = new FormData();
+
+    formNewsData.append("title", news.title);
+    formNewsData.append("body", news.body);
+    formNewsData.append("image", news.image || null);
+
+    return this.httpClient
+      .put<News>(`${this.serverUrl}/api/user/news/${id}`, formNewsData);
+  }
 }

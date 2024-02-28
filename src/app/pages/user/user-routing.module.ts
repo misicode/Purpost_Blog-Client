@@ -23,6 +23,11 @@ const routes: Routes = [
     canActivate: [ isAuthenticatedGuard ],
     component: CreateNewsPageComponent
   },
+  {
+    path: "news/:id",
+    canActivate: [ isAuthenticatedGuard ],
+    component: CreateNewsPageComponent
+  },
 ];
 
 @NgModule({

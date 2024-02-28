@@ -1,6 +1,7 @@
-import { Component, inject } from "@angular/core";
+import { Component, OnInit, inject } from "@angular/core";
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
-import { Router } from "@angular/router";
+import { ActivatedRoute, Router } from "@angular/router";
+import { switchMap } from "rxjs";
 import { ToastrService } from "ngx-toastr";
 
 import { NewsService } from "../../../core/services/news.service";
@@ -8,12 +9,12 @@ import { NewsService } from "../../../core/services/news.service";
 @Component({
   selector: "user-create-news-page",
   templateUrl: "./create-news-page.component.html",
-  styleUrl: "./create-news-page.component.scss",
 })
-export class CreateNewsPageComponent {
+export class CreateNewsPageComponent implements OnInit {
   private formBuilder = inject(FormBuilder);
   private router = inject(Router);
   private toastrService = inject(ToastrService);
+  private id = this.activatedRoute.snapshot.paramMap.get("id");
   
   public imageUrl: string = "";
   public newsForm: FormGroup = this.formBuilder.group({
@@ -23,6 +24,7 @@ export class CreateNewsPageComponent {
   });
 
   constructor(
+    private activatedRoute: ActivatedRoute,
     private newsService: NewsService
   ) {}
 
@@ -37,11 +39,46 @@ export class CreateNewsPageComponent {
     }
   }
 
+  ngOnInit(): void {
+    if(this.id) {
+      this.newsService.getNewsById(this.id).subscribe(
+        news => {
+          if (!news) return this.router.navigateByUrl("/news");
+
+          this.newsForm = this.formBuilder.group({
+            title: [news.title, [Validators.required]],
+            body: [news.body, [Validators.required]],
+            image: [null],
+          });
+          this.imageUrl = news.image.url;
+
+          return;
+        }
+      )
+    }
+  }
+
   createNews() {
-    this.newsService.createNews(this.newsForm.value)
-      .subscribe({
-        next: (res) => {
-          this.toastrService.success("La noticia se creó exitosamente");
+    if (!this.id) {
+      this.newsService.createNews(this.newsForm.value)
+        .subscribe({
+          next: () => {
+            this.toastrService.success("La noticia se creó exitosamente");
+            this.router.navigateByUrl("/user/news");
+          }
+        });
+    } else {
+      this.updateNews();
+    }
+  }
+
+  updateNews() {
+    this.activatedRoute.params
+      .pipe(
+        switchMap( ({ id }) => this.newsService.updateNews(id, this.newsForm.value) )
+      ).subscribe({
+        next: () => {
+          this.toastrService.success("La noticia se actualizó exitosamente");
           this.router.navigateByUrl("/user/news");
         }
       });

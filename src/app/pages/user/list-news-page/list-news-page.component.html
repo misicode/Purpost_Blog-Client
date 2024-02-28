@@ -28,7 +28,7 @@
           <td>{{ news.title }}</td>
           <td>{{ news.createdAt | date: "dd/MM/yyyy" }}</td>
           <td>
-            <a>
+            <a [routerLink]="['/user/news', news.idNews]" class="mr-1.5">
               <button class="!bg-blue-500 hover:!bg-blue-400">
                 <svg
                   fill="currentColor"
