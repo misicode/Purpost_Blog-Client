@@ -1,22 +1,22 @@
 import { Component, OnInit, inject } from "@angular/core";
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { ActivatedRoute, Router } from "@angular/router";
-import { switchMap } from "rxjs";
 import { ToastrService } from "ngx-toastr";
 
 import { NewsService } from "../../../core/services/news.service";
 
 @Component({
-  selector: "user-create-news-page",
-  templateUrl: "./create-news-page.component.html",
+  selector: "user-form-news-page",
+  templateUrl: "./form-news-page.component.html",
 })
-export class CreateNewsPageComponent implements OnInit {
+export class FormNewsPageComponent implements OnInit {
   private formBuilder = inject(FormBuilder);
   private router = inject(Router);
   private toastrService = inject(ToastrService);
   private id = this.activatedRoute.snapshot.paramMap.get("id");
   
   public imageUrl: string = "";
+  public loading: boolean = false;
   public newsForm: FormGroup = this.formBuilder.group({
     title: ["", [Validators.required]],
     body: ["", [Validators.required]],
@@ -41,8 +41,12 @@ export class CreateNewsPageComponent implements OnInit {
 
   ngOnInit(): void {
     if(this.id) {
+      this.loading = true;
+      
       this.newsService.getNewsById(this.id).subscribe(
         news => {
+          this.loading = false;
+
           if (!news) return this.router.navigateByUrl("/news");
 
           this.newsForm = this.formBuilder.group({
@@ -50,6 +54,7 @@ export class CreateNewsPageComponent implements OnInit {
             body: [news.body, [Validators.required]],
             image: [null],
           });
+          
           this.imageUrl = news.image.url;
 
           return;
@@ -58,25 +63,27 @@ export class CreateNewsPageComponent implements OnInit {
     }
   }
 
-  createNews() {
-    if (!this.id) {
-      this.newsService.createNews(this.newsForm.value)
-        .subscribe({
-          next: () => {
-            this.toastrService.success("La noticia se creó exitosamente");
-            this.router.navigateByUrl("/user/news");
-          }
-        });
+  runNewsForm() {
+    if(!this.id) {
+      this.createNews();
     } else {
-      this.updateNews();
+      this.updateNews(this.id);
     }
   }
 
-  updateNews() {
-    this.activatedRoute.params
-      .pipe(
-        switchMap( ({ id }) => this.newsService.updateNews(id, this.newsForm.value) )
-      ).subscribe({
+  createNews() {
+    this.newsService.createNews(this.newsForm.value)
+      .subscribe({
+        next: () => {
+          this.toastrService.success("La noticia se creó exitosamente");
+          this.router.navigateByUrl("/user/news");
+        }
+      });
+  }
+
+  updateNews(id: string) {
+    this.newsService.updateNews(id, this.newsForm.value)
+      .subscribe({
         next: () => {
           this.toastrService.success("La noticia se actualizó exitosamente");
           this.router.navigateByUrl("/user/news");

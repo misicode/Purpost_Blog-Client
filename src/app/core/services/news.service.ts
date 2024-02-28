@@ -48,7 +48,10 @@ export class NewsService {
 
     formNewsData.append("title", news.title);
     formNewsData.append("body", news.body);
-    formNewsData.append("image", news.image || null);
+    
+    if(news.image) {
+      formNewsData.append("image", news.image);
+    }
 
     return this.httpClient
       .put<News>(`${this.serverUrl}/api/user/news/${id}`, formNewsData);

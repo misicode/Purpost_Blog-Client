@@ -3,15 +3,16 @@ import { CommonModule } from "@angular/common";
 import { ReactiveFormsModule } from "@angular/forms";
 import { NgxSkeletonLoaderModule } from "ngx-skeleton-loader";
 
-import { CreateNewsPageComponent } from "./create-news-page/create-news-page.component";
+import { FormNewsPageComponent } from "./form-news-page/form-news-page.component";
 import { ListNewsPageComponent } from "./list-news-page/list-news-page.component";
 import { ProfilePageComponent } from "./profile-page/profile-page.component";
 
+import { SharedModule } from "../../shared/shared.module";
 import { UserRoutingModule } from "./user-routing.module";
 
 @NgModule({
   declarations: [
-    CreateNewsPageComponent,
+    FormNewsPageComponent,
     ListNewsPageComponent,
     ProfilePageComponent,
   ],
@@ -19,6 +20,7 @@ import { UserRoutingModule } from "./user-routing.module";
     CommonModule,
     NgxSkeletonLoaderModule,
     ReactiveFormsModule,
+    SharedModule,
     UserRoutingModule,
   ],
 })

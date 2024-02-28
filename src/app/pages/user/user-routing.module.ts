@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
-import { CreateNewsPageComponent } from "./create-news-page/create-news-page.component";
+import { FormNewsPageComponent } from "./form-news-page/form-news-page.component";
 import { ListNewsPageComponent } from "./list-news-page/list-news-page.component";
 import { ProfilePageComponent } from "./profile-page/profile-page.component";
 
@@ -21,12 +21,12 @@ const routes: Routes = [
   {
     path: "news/create",
     canActivate: [ isAuthenticatedGuard ],
-    component: CreateNewsPageComponent
+    component: FormNewsPageComponent
   },
   {
     path: "news/:id",
     canActivate: [ isAuthenticatedGuard ],
-    component: CreateNewsPageComponent
+    component: FormNewsPageComponent
   },
 ];
 

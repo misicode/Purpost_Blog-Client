@@ -6,7 +6,7 @@
 </div>
 <section>
   <form
-    (ngSubmit)="createNews()"
+    (ngSubmit)="runNewsForm()"
     [formGroup]="newsForm"
     enctype="multipart/form-data"
   >
@@ -83,3 +83,4 @@
     </div>
   </form>
 </section>
+<app-loader [show]="loading"></app-loader>

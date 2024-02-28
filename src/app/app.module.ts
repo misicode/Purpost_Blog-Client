@@ -5,6 +5,7 @@ import { BrowserModule } from "@angular/platform-browser";
 import { ToastrModule } from "ngx-toastr";
 
 import { AppRoutingModule } from "./app-routing.module";
+import { SharedModule } from "./shared/shared.module";
 
 import { AppComponent } from "./app.component";
 import { ContentLayoutComponent } from "./layouts/content-layout/content-layout.component";
@@ -26,6 +27,7 @@ import { TokenInterceptorService } from "./core/interceptors/token.interceptor";
     BrowserAnimationsModule,
     BrowserModule,
     HttpClientModule,
+    SharedModule,
     ToastrModule.forRoot({
       timeOut: 2500,
     }),
