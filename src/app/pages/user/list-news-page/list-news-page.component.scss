@@ -4,7 +4,7 @@ table th {
 table td {
   @apply border-t border-slate-300 border-solid px-4 py-2 text-center text-smvs;
 }
-table button {
+table tr button {
   @apply bg-rose-500 hover:bg-rose-400 px-2.5 py-2 text-white;
 }
 table button svg {

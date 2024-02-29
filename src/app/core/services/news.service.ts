@@ -56,4 +56,9 @@ export class NewsService {
     return this.httpClient
       .put<News>(`${this.serverUrl}/api/user/news/${id}`, formNewsData);
   }
+
+  deleteNews(id: string): Observable<string> {
+    return this.httpClient
+      .delete(`${this.serverUrl}/api/user/news/${id}`, { responseType: "text" });
+  }
 }
