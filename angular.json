@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "client-eggnews": {
+    "purpost-client": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -17,7 +17,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:application",
           "options": {
-            "outputPath": "dist/client-eggnews",
+            "outputPath": "dist/purpost-client",
             "index": "src/index.html",
             "browser": "src/main.ts",
             "polyfills": [
@@ -62,10 +62,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "buildTarget": "client-eggnews:build:production"
+              "buildTarget": "purpost-client:build:production"
             },
             "development": {
-              "buildTarget": "client-eggnews:build:development"
+              "buildTarget": "purpost-client:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -73,7 +73,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "buildTarget": "client-eggnews:build"
+            "buildTarget": "purpost-client:build"
           }
         },
         "test": {
