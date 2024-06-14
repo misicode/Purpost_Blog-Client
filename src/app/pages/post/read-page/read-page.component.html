@@ -1,26 +1,26 @@
 <section>
-  @if (news) {
+  @if (post) {
     <div class="card !px-14 !py-10">
       <h3 class="font-medium pb-8 text-xl text-center text-indigo-800">
-        {{ news.title }}
+        {{ post.title }}
       </h3>
       <div class="border-b-2 border-indigo-100 border-solid pb-8">
         <img
           class="block max-w-[80%] mx-auto"
-          [src]="news.image.url"
-          [alt]="news.image.name"
+          [src]="post.image.url"
+          [alt]="post.image.name"
         />
       </div>
       <div class="flex justify-between mb-8 mt-4 text-xss">
         <p>
-          {{ news.user.names + " " + news.user.surnames }}
+          {{ post.user.names + " " + post.user.surnames }}
         </p>
         <p>
-          {{ news.createdAt | date:"M/d/yy, h:mm a" }}
+          {{ post.createdAt | date:"M/d/yy, h:mm a" }}
         </p>
       </div>
       <p class="whitespace-pre-line">
-        {{ news.body }}
+        {{ post.body }}
       </p>
     </div>
   }

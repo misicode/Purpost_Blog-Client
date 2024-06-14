@@ -1,8 +1,8 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
-import { FormNewsPageComponent } from "./form-news-page/form-news-page.component";
-import { ListNewsPageComponent } from "./list-news-page/list-news-page.component";
+import { FormPostPageComponent } from "./form-post-page/form-post-page.component";
+import { ListPostPageComponent } from "./list-post-page/list-post-page.component";
 import { ProfilePageComponent } from "./profile-page/profile-page.component";
 
 import { isAuthenticatedGuard } from "../../core/guards/is-authenticated.guard";
@@ -14,19 +14,19 @@ const routes: Routes = [
     component: ProfilePageComponent
   },
   {
-    path: "news",
+    path: "post",
     canActivate: [ isAuthenticatedGuard ],
-    component: ListNewsPageComponent
+    component: ListPostPageComponent
   },
   {
-    path: "news/create",
+    path: "post/create",
     canActivate: [ isAuthenticatedGuard ],
-    component: FormNewsPageComponent
+    component: FormPostPageComponent
   },
   {
-    path: "news/:id",
+    path: "post/:id",
     canActivate: [ isAuthenticatedGuard ],
-    component: FormNewsPageComponent
+    component: FormPostPageComponent
   },
 ];
 

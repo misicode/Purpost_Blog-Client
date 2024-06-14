@@ -1,12 +1,12 @@
 <div class="bg-indigo-700 px-16 py-4 text-sms text-white">
-  <h2>Mis Noticias</h2>
+  <h2>Mis Publicaciones</h2>
 </div>
 <div class="bg-white border-b-2 border-indigo-100 border-solid font-medium px-16 py-3 text-slate-700 text-xss">
-  Inicio / <a routerLink="/user/news">Noticias</a>
+  Inicio / <a routerLink="/user/post">Publicaciones</a>
 </div>
 <section class="gap-y-10 grid">
   <div class="mb-8 text-right">
-    <a routerLink="/user/news/create">
+    <a routerLink="/user/post/create">
       <button class="btn-success">
         Nuevo
       </button>
@@ -22,13 +22,13 @@
       </tr>
     </thead>
     <tbody>
-      @for (news of listNews; track news.idNews; let i = $index) {
+      @for (post of listPosts; track post.idPost; let i = $index) {
         <tr>
           <td>{{ i + 1 }}</td>
-          <td>{{ news.title }}</td>
-          <td>{{ news.createdAt | date: "dd/MM/yyyy" }}</td>
+          <td>{{ post.title }}</td>
+          <td>{{ post.createdAt | date: "dd/MM/yyyy" }}</td>
           <td>
-            <a [routerLink]="['/user/news', news.idNews]" class="mr-1.5">
+            <a [routerLink]="['/user/post', post.idPost]" class="mr-1.5">
               <button class="!bg-blue-500 hover:!bg-blue-400">
                 <svg
                   fill="currentColor"
@@ -40,7 +40,7 @@
                 </svg>
               </button>
             </a>
-            <button (click)="openModal(news.idNews)">
+            <button (click)="openModal(post.idPost)">
               <svg
                 fill="currentColor"
                 viewBox="0 0 24 24"
@@ -97,13 +97,13 @@
 </section>
 <app-modal [show]="isOpen">
   <p class="mb-6 py-4">
-    ¿Está seguro que desea eliminar la noticia?
+    ¿Está seguro que desea eliminar la publicación?
   </p>
   <div class="text-right">
     <button (click)="closeModal()" class="btn-cancel">
       Cancelar
     </button>
-    <button (click)="deleteNews()" class="btn-success">
+    <button (click)="deletePost()" class="btn-success">
       Eliminar
     </button>
   </div>

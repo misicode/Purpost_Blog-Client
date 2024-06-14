@@ -1,6 +1,6 @@
 <section class="gap-y-10 grid">
-  @for (news of listNews; track news.idNews) {
-    <list-news-card [news]="news"></list-news-card>
+  @for (post of listPosts; track post.idPost) {
+    <list-post-card [post]="post"></list-post-card>
   } @empty {
     @for (_ of [].constructor(2); track $index) {
       <div class="card gap-x-8 grid grid-cols-[1fr_2fr] h-[18.5rem] !pr-16">

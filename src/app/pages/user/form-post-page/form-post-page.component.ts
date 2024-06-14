@@ -3,13 +3,13 @@ import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { ActivatedRoute, Router } from "@angular/router";
 import { ToastrService } from "ngx-toastr";
 
-import { NewsService } from "../../../core/services/news.service";
+import { PostService } from "../../../core/services/post.service";
 
 @Component({
-  selector: "user-form-news-page",
-  templateUrl: "./form-news-page.component.html",
+  selector: "user-form-post-page",
+  templateUrl: "./form-post-page.component.html",
 })
-export class FormNewsPageComponent implements OnInit {
+export class FormPostPageComponent implements OnInit {
   private formBuilder = inject(FormBuilder);
   private router = inject(Router);
   private toastrService = inject(ToastrService);
@@ -17,7 +17,7 @@ export class FormNewsPageComponent implements OnInit {
   
   public imageUrl: string = "";
   public loading: boolean = false;
-  public newsForm: FormGroup = this.formBuilder.group({
+  public postForm: FormGroup = this.formBuilder.group({
     title: ["", [Validators.required]],
     body: ["", [Validators.required]],
     image: [null, [Validators.required]],
@@ -25,7 +25,7 @@ export class FormNewsPageComponent implements OnInit {
 
   constructor(
     private activatedRoute: ActivatedRoute,
-    private newsService: NewsService
+    private postService: PostService
   ) {}
 
   onImageChange(event: Event) {
@@ -35,7 +35,7 @@ export class FormNewsPageComponent implements OnInit {
       const file = inputElement.files[0];
 
       this.imageUrl = URL.createObjectURL(file);
-      this.newsForm.get("image")?.setValue(file);
+      this.postForm.get("image")?.setValue(file);
     }
   }
 
@@ -43,19 +43,19 @@ export class FormNewsPageComponent implements OnInit {
     if(this.id) {
       this.loading = true;
       
-      this.newsService.getNewsById(this.id).subscribe(
-        news => {
+      this.postService.getPostById(this.id).subscribe(
+        post => {
           this.loading = false;
 
-          if (!news) return this.router.navigateByUrl("/news");
+          if (!post) return this.router.navigateByUrl("/post");
 
-          this.newsForm = this.formBuilder.group({
-            title: [news.title, [Validators.required]],
-            body: [news.body, [Validators.required]],
+          this.postForm = this.formBuilder.group({
+            title: [post.title, [Validators.required]],
+            body: [post.body, [Validators.required]],
             image: [null],
           });
           
-          this.imageUrl = news.image.url;
+          this.imageUrl = post.image.url;
 
           return;
         }
@@ -63,30 +63,30 @@ export class FormNewsPageComponent implements OnInit {
     }
   }
 
-  runNewsForm() {
+  runPostForm() {
     if(!this.id) {
-      this.createNews();
+      this.createPost();
     } else {
-      this.updateNews(this.id);
+      this.updatePost(this.id);
     }
   }
 
-  createNews() {
-    this.newsService.createNews(this.newsForm.value)
+  createPost() {
+    this.postService.createPost(this.postForm.value)
       .subscribe({
         next: () => {
-          this.toastrService.success("La noticia se creó exitosamente");
-          this.router.navigateByUrl("/user/news");
+          this.toastrService.success("La publicación se creó exitosamente");
+          this.router.navigateByUrl("/user/post");
         }
       });
   }
 
-  updateNews(id: string) {
-    this.newsService.updateNews(id, this.newsForm.value)
+  updatePost(id: string) {
+    this.postService.updatePost(id, this.postForm.value)
       .subscribe({
         next: () => {
-          this.toastrService.success("La noticia se actualizó exitosamente");
-          this.router.navigateByUrl("/user/news");
+          this.toastrService.success("La publicación se actualizó exitosamente");
+          this.router.navigateByUrl("/user/post");
         }
       });
   }

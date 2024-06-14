@@ -64,7 +64,7 @@ export class AuthService {
     const headers = new HttpHeaders().set("Authorization", `Bearer ${ token }`);
 
     return this.httpClient
-      .get<LoginResponse>(`${ this.serverUrl }/api/auth/token`, { headers })
+      .get<LoginResponse>(`${ this.serverUrl }/api/v1/auth/token`, { headers })
       .pipe(
         map( ({ user, token }) => this.setAuthentication(user, token) ),
         catchError(() => {
@@ -76,7 +76,7 @@ export class AuthService {
 
   login(email: string, password: string): Observable<boolean> {
     return this.httpClient
-      .post<LoginResponse>(`${ this.serverUrl }/api/auth/login`, { email, password } )
+      .post<LoginResponse>(`${ this.serverUrl }/api/v1/auth/login`, { email, password } )
       .pipe(
         map( ({ user, token }) => this.setAuthentication(user, token) )
       );

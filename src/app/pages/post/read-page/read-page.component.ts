@@ -2,32 +2,32 @@ import { Component, OnInit } from "@angular/core";
 import { ActivatedRoute, Router } from "@angular/router";
 import { switchMap } from "rxjs";
 
-import { News } from "../../../core/interfaces/news.interface";
+import { Post } from "../../../core/interfaces/post.interface";
 
-import { NewsService } from "../../../core/services/news.service";
+import { PostService } from "../../../core/services/post.service";
 
 @Component({
   selector: "news-read-page",
   templateUrl: "./read-page.component.html",
 })
 export class ReadPageComponent implements OnInit {
-  public news?: News;
+  public post?: Post;
 
   constructor(
     private activatedRoute: ActivatedRoute,
-    private newsService: NewsService,
+    private postService: PostService,
     private router: Router
   ) {}
 
   ngOnInit(): void {
     this.activatedRoute.params
       .pipe(
-        switchMap( ({ id }) => this.newsService.getNewsById(id) )
+        switchMap( ({ id }) => this.postService.getPostById(id) )
       ).subscribe(
-        news => {
-          if (!news) return this.router.navigateByUrl("/news");
+        post => {
+          if (!post) return this.router.navigateByUrl("/posts");
 
-          this.news = news;
+          this.post = post;
 
           return;
         }

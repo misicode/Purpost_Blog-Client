@@ -13,8 +13,8 @@ const routes: Routes = [
         loadChildren: () => import("./pages/auth/auth.module").then(m => m.AuthModule)
       },
       {
-        path: "news",
-        loadChildren: () => import("./pages/news/news.module").then(m => m.NewsModule)
+        path: "post",
+        loadChildren: () => import("./pages/post/post.module").then(m => m.PostModule)
       },
       {
         path: "user",
@@ -22,7 +22,7 @@ const routes: Routes = [
       },
       {
         path: "",
-        redirectTo: "news",
+        redirectTo: "post",
         pathMatch: "full",
       }
     ]

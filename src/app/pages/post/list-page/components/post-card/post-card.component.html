@@ -1,31 +1,31 @@
 <div class="before:bg-indigo-700 card hover:border-2 hover:border-indigo-500 hover:border-solid overflow-hidden !pr-16 relative z-0">
-  <a [routerLink]="news.idNews">
+  <a [routerLink]="post.idPost">
     <div class="gap-x-8 grid grid-cols-[1fr_2fr]">
       <div class="relative">
         <img
-          [src]="news.image.url"
-          [alt]="news.image.name"
+          [src]="post.image.url"
+          [alt]="post.image.name"
           class="absolute h-full object-center object-cover w-full"
         />
       </div>
       <div>
         <h3 class="mb-3">
-          {{ news.title }}
+          {{ post.title }}
         </h3>
-        <p class="card-news-body mb-4 overflow-hidden text-slate-600 text-sms">
-          {{ news.body }}
+        <p class="card-post-body mb-4 overflow-hidden text-slate-600 text-sms">
+          {{ post.body }}
         </p>
         <div class="text-right text-slate-600 text-xss">
           <p class="font-medium">
-            {{ news.user.names }}
+            {{ post.user.names }}
           </p>
           <p>
-            {{ news.createdAt | date:"MMMM d, y" }}
+            {{ post.createdAt | date:"MMMM d, y" }}
           </p>
         </div>
       </div>
     </div>
-    <div class="absolute bg-indigo-700 flex h-10 items-center justify-center overflow-hidden right-0 rounded-bl-[2rem] rounded-tr-bl top-0 w-10 card-news-corner">
+    <div class="absolute bg-indigo-700 flex h-10 items-center justify-center overflow-hidden right-0 rounded-bl-[2rem] rounded-tr-bl top-0 w-10">
       <div class="mr-[-.25rem] mt-[-.25rem] text-white">→</div>
     </div>
   </a>

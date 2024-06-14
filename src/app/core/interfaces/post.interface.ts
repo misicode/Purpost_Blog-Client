@@ -1,8 +1,8 @@
 import { Image } from "./image.interface"
 import { User } from "./user.interface"
 
-export interface News {
-  idNews: string,
+export interface Post {
+  idPost: string,
   title: string,
   body: string,
   user: User,
@@ -12,7 +12,7 @@ export interface News {
   active: boolean,
 }
 
-export interface NewsRequest {
+export interface PostRequest {
   title: string,
   body: string,
   image: File,

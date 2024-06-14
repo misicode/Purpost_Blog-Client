@@ -3,21 +3,21 @@ import { CommonModule } from "@angular/common";
 import { NgxSkeletonLoaderModule } from "ngx-skeleton-loader";
 
 import { ListPageComponent } from "./list-page/list-page.component";
-import { NewsCardComponent } from "./list-page/components/news-card/news-card.component";
+import { PostCardComponent } from "./list-page/components/post-card/post-card.component";
 import { ReadPageComponent } from "./read-page/read-page.component";
 
-import { NewsRoutingModule } from "./news-routing.module";
+import { PostRoutingModule } from "./post-routing.module";
 
 @NgModule({
   declarations: [
     ListPageComponent,
-    NewsCardComponent,
+    PostCardComponent,
     ReadPageComponent,
   ],
   imports: [
     CommonModule,
-    NewsRoutingModule,
+    PostRoutingModule,
     NgxSkeletonLoaderModule,
   ],
 })
-export class NewsModule {}
+export class PostModule {}
