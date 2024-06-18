@@ -13,7 +13,7 @@ const routes: Routes = [
         loadChildren: () => import("./pages/auth/auth.module").then(m => m.AuthModule)
       },
       {
-        path: "post",
+        path: "posts",
         loadChildren: () => import("./pages/post/post.module").then(m => m.PostModule)
       },
       {
@@ -22,7 +22,7 @@ const routes: Routes = [
       },
       {
         path: "",
-        redirectTo: "post",
+        redirectTo: "posts",
         pathMatch: "full",
       }
     ]

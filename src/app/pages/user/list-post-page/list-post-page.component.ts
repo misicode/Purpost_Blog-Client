@@ -11,15 +11,12 @@ import { Post } from "../../../core/interfaces/post.interface";
   styleUrl: "./list-post-page.component.scss",
 })
 export class ListPostPageComponent implements OnInit {
+  private postService = inject(PostService);
   private toastrService = inject(ToastrService);
   
   public idPost: string = "";
   public isOpen: boolean = false;
   public listPosts: Post[] = [];
-
-  constructor(
-    private postService: PostService
-  ) {}
 
   ngOnInit(): void {
     this.loadPosts();

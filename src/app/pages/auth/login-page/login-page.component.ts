@@ -28,7 +28,7 @@ export class LoginPageComponent {
       .subscribe({
         next: () => {
           this.loading = false;
-          this.router.navigateByUrl("/user/news");
+          this.router.navigateByUrl("/user/posts");
         },
         error: () => {
           this.loading = false;

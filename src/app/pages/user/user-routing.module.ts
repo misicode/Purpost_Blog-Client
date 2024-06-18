@@ -14,17 +14,17 @@ const routes: Routes = [
     component: ProfilePageComponent
   },
   {
-    path: "post",
+    path: "posts",
     canActivate: [ isAuthenticatedGuard ],
     component: ListPostPageComponent
   },
   {
-    path: "post/create",
+    path: "posts/create",
     canActivate: [ isAuthenticatedGuard ],
     component: FormPostPageComponent
   },
   {
-    path: "post/:id",
+    path: "posts/:id",
     canActivate: [ isAuthenticatedGuard ],
     component: FormPostPageComponent
   },
