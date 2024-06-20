@@ -1,19 +1,18 @@
 import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { Injectable } from "@angular/core";
-import { BehaviorSubject, Observable, catchError, map, of, tap } from "rxjs";
+import { BehaviorSubject, Observable, catchError, map, of } from "rxjs";
 import { jwtDecode } from "jwt-decode";
 
 import { environment } from "../../../environments/environment";
 
 import { LoginResponse } from "../interfaces/login-response.interface";
-import { User } from "../interfaces/user.interface";
 
 @Injectable({
   providedIn: "root",
 })
 export class AuthService {
   private _authStatus = new BehaviorSubject<boolean>(false);
-  private _authUser = new BehaviorSubject<LoginResponse | null>(null);
+  private _authUser = new BehaviorSubject<string | null>(null);
 
   private readonly serverUrl: string = environment.serverUrl;
 
@@ -29,7 +28,7 @@ export class AuthService {
       return;
     }
 
-    const { user, token } = JSON.parse(isAuth);
+    const { token } = JSON.parse(isAuth);
 
     const decodedToken = jwtDecode(token);
 
@@ -41,14 +40,16 @@ export class AuthService {
     }
     
     this._authStatus.next(true);
-    this._authUser.next({ user, token });
+    this._authUser.next(decodedToken.sub ?? null);
   }
 
-  private setAuthentication(user: User, token: string): boolean {
+  private setAuthentication(token: string): boolean {
+    const decodedToken = jwtDecode(token);
+
     this._authStatus.next(true);
-    this._authUser.next({ user, token });
+    this._authUser.next(decodedToken.sub ?? null);
     
-    localStorage.setItem("sesion", JSON.stringify({ user, token }));
+    localStorage.setItem("sesion", JSON.stringify({ token }));
 
     return true;
   }
@@ -66,7 +67,7 @@ export class AuthService {
     return this.httpClient
       .get<LoginResponse>(`${ this.serverUrl }/api/v1/auth/token`, { headers })
       .pipe(
-        map( ({ user, token }) => this.setAuthentication(user, token) ),
+        map( ({ token }) => this.setAuthentication(token) ),
         catchError(() => {
           this.logout();
           return of(false);
@@ -74,11 +75,11 @@ export class AuthService {
       );
   }
 
-  login(email: string, password: string): Observable<boolean> {
+  login(account: string, password: string): Observable<boolean> {
     return this.httpClient
-      .post<LoginResponse>(`${ this.serverUrl }/api/v1/auth/login`, { email, password } )
+      .post<LoginResponse>(`${ this.serverUrl }/api/v1/auth/login`, { account, password } )
       .pipe(
-        map( ({ user, token }) => this.setAuthentication(user, token) )
+        map( ({ token }) => this.setAuthentication(token) )
       );
   }
 
@@ -93,7 +94,7 @@ export class AuthService {
     return this._authStatus.asObservable();
   }
 
-  get authUser():Observable<LoginResponse | null>{
+  get authUser():Observable<string | null>{
     return this._authUser.asObservable();
   }
 }

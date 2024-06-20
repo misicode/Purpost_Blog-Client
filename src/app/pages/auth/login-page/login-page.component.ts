@@ -16,15 +16,15 @@ export class LoginPageComponent {
   public loading: boolean = false;
 
   public loginForm: FormGroup = this.formBuilder.group({
-    email: ["", [Validators.required, Validators.email]],
+    account: ["", [Validators.required]],
     password: ["", [Validators.required, Validators.minLength(6)]]
   });
 
   login() {
-    const { email, password } = this.loginForm.value;
+    const { account, password } = this.loginForm.value;
     this.loading = true;
     
-    this.authService.login(email, password)
+    this.authService.login(account, password)
       .subscribe({
         next: () => {
           this.loading = false;
