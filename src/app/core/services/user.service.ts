@@ -14,13 +14,13 @@ export class UserService {
   
   constructor(private httpClient: HttpClient) {}
 
-  getProfile(): Observable<UserProfile> {
+  getProfile(username: string): Observable<UserProfile> {
     return this.httpClient
-      .get<UserProfile>(`${ this.serverUrl }/api/user/profile`);
+      .get<UserProfile>(`${ this.serverUrl }/api/v1/user/username/${ username }`);
   }
 
   editProfile(user: UserProfile): Observable<UserProfile> {
     return this.httpClient
-      .put<UserProfile>(`${ this.serverUrl }/api/user/profile`, user);
+      .put<UserProfile>(`${ this.serverUrl }/api/v1/user/private`, user);
   }
 }

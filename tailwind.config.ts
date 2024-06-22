@@ -9,6 +9,7 @@ module.exports = {
       colors: {
         "indigo": {
           75: "#E7ECFF",
+          250: "#BFCCFF",
         }
       },
       fontSize: {

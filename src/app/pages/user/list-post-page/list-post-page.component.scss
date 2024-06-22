@@ -1,8 +1,8 @@
 table th {
-  @apply px-4 py-3;
+  @apply px-4 py-5;
 }
 table td {
-  @apply border-t border-slate-300 border-solid px-4 py-2 text-center text-smvs;
+  @apply border-t border-slate-200 border-solid px-4 py-2 text-center text-smvs;
 }
 table tr button {
   @apply bg-rose-500 hover:bg-rose-400 px-2.5 py-2 text-white;

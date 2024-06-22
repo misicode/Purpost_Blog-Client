@@ -1,7 +1,9 @@
 import { Component, OnInit, inject } from "@angular/core";
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { ToastrService } from "ngx-toastr";
+import { switchMap } from "rxjs";
 
+import { AuthService } from "../../../core/services/auth.service";
 import { UserService } from "../../../core/services/user.service";
 
 @Component({
@@ -10,7 +12,9 @@ import { UserService } from "../../../core/services/user.service";
 })
 export class ProfilePageComponent implements OnInit {
   private formBuilder = inject(FormBuilder);
+  private authService = inject(AuthService);
   private toastrService = inject(ToastrService);
+  private userService = inject(UserService);
   private originalProfileForm: any;
   
   public profileForm: FormGroup = this.formBuilder.group({
@@ -20,22 +24,19 @@ export class ProfilePageComponent implements OnInit {
   });
   public editable: boolean = false;
 
-  constructor(
-    private userService: UserService
-  ) {}
-
   ngOnInit(): void {
     this.getProfile();
   }
 
   getProfile() {
-    this.userService.getProfile()
-      .subscribe({
-        next: (res) => {
-          this.profileForm.patchValue(res);
-          this.originalProfileForm = this.profileForm.getRawValue();
-        }
-      });
+    this.authService.authUser.pipe(
+      switchMap(username => this.userService.getProfile(username))
+    ).subscribe({
+      next: (res) => {
+        this.profileForm.patchValue(res);
+        this.originalProfileForm = this.profileForm.getRawValue();
+      }
+    });
   }
 
   editProfile() {

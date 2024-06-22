@@ -12,7 +12,7 @@ import { LoginResponse } from "../interfaces/login-response.interface";
 })
 export class AuthService {
   private _authStatus = new BehaviorSubject<boolean>(false);
-  private _authUser = new BehaviorSubject<string | null>(null);
+  private _authUser = new BehaviorSubject<string>("");
 
   private readonly serverUrl: string = environment.serverUrl;
 
@@ -40,14 +40,14 @@ export class AuthService {
     }
     
     this._authStatus.next(true);
-    this._authUser.next(decodedToken.sub ?? null);
+    this._authUser.next(decodedToken.sub ?? "");
   }
 
   private setAuthentication(token: string): boolean {
     const decodedToken = jwtDecode(token);
 
     this._authStatus.next(true);
-    this._authUser.next(decodedToken.sub ?? null);
+    this._authUser.next(decodedToken.sub ?? "");
     
     localStorage.setItem("sesion", JSON.stringify({ token }));
 
@@ -85,16 +85,16 @@ export class AuthService {
 
   logout() {
     this._authStatus.next(false);
-    this._authUser.next(null);
+    this._authUser.next("");
 
     localStorage.removeItem("sesion");
   }
 
-  get authStatus(): Observable<boolean>{
+  get authStatus(): Observable<boolean> {
     return this._authStatus.asObservable();
   }
 
-  get authUser():Observable<string | null>{
+  get authUser(): Observable<string> {
     return this._authUser.asObservable();
   }
 }

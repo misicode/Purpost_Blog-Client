@@ -16,7 +16,7 @@ export class ErrorInterceptorService implements HttpInterceptor {
             if(err.error instanceof ProgressEvent) {
               this.toastrService.error("Error de conectividad");
             } else {
-              this.toastrService.error(err.error.message);
+              this.toastrService.error("Error genérico", err.error.message);
             }
 
             console.error(err.error);

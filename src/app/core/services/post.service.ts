@@ -27,9 +27,9 @@ export class PostService {
       );
   }
 
-  getPostByUser(email: string): Observable<Post[]> {
+  getPostByUser(username: string): Observable<Post[]> {
     return this.httpClient
-      .get<Post[]>(`${ this.serverUrl }/api/v1/post/email/${email}`);
+      .get<Post[]>(`${ this.serverUrl }/api/v1/post/username/${username}`);
   }
 
   createPost(post: PostRequest): Observable<Post> {
