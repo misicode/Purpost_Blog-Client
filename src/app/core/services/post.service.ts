@@ -35,6 +35,7 @@ export class PostService {
   createPost(post: PostRequest): Observable<Post> {
     const formPostData: FormData = new FormData();
 
+    formPostData.append("username", post.username);
     formPostData.append("title", post.title);
     formPostData.append("body", post.body);
     formPostData.append("image", post.image);
@@ -46,6 +47,7 @@ export class PostService {
   updatePost(id: string, post: PostRequest): Observable<Post> {
     const formPostData: FormData = new FormData();
 
+    formPostData.append("idPost", id);
     formPostData.append("title", post.title);
     formPostData.append("body", post.body);
     
@@ -59,6 +61,6 @@ export class PostService {
 
   deletePost(id: string): Observable<string> {
     return this.httpClient
-      .delete(`${this.serverUrl}/api/v1/post/private`, { responseType: "text" });
+      .delete(`${this.serverUrl}/api/v1/post/private/${id}`, { responseType: "text" });
   }
 }

@@ -40,13 +40,14 @@ export class ProfilePageComponent implements OnInit {
   }
 
   editProfile() {
-    this.userService.editProfile(this.profileForm.value)
-      .subscribe({
-        next: (res) => {
-          this.toastrService.success("Su perfil se actualizó exitosamente");
-          this.offEditable(res);
-        }
-      });
+    this.authService.authUser.pipe(
+      switchMap(username => this.userService.editProfile({ ...this.profileForm.value, username }))
+    ).subscribe({
+      next: (res) => {
+        this.toastrService.success("Su perfil se actualizó exitosamente");
+        this.offEditable(res);
+      }
+    });
   }
 
   onEditable() {

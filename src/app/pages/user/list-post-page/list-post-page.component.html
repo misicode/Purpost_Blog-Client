@@ -22,14 +22,14 @@
       </tr>
     </thead>
     <tbody class="relative">
-      @defer(when isLoading) {
+      @defer(when !isLoading) {
         @for (post of listPosts; track post.idPost; let i = $index) {
           <tr>
             <td>{{ i + 1 }}</td>
             <td>{{ post.title }}</td>
             <td>{{ post.createdAt | date: "dd/MM/yyyy" }}</td>
             <td>
-              <a [routerLink]="['/user/post', post.idPost]" class="mr-1.5">
+              <a [routerLink]="['/user/posts', post.idPost]" class="mr-1.5">
                 <button class="!bg-blue-500 hover:!bg-blue-400">
                   <svg
                     fill="currentColor"

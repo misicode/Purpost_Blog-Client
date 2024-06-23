@@ -4,7 +4,7 @@ import { Observable } from "rxjs";
 
 import { environment } from "../../../environments/environment";
 
-import { UserProfile } from "../interfaces/user.interface";
+import { UserProfile, UserUpdateRequest } from "../interfaces/user.interface";
 
 @Injectable({
   providedIn: "root",
@@ -19,7 +19,7 @@ export class UserService {
       .get<UserProfile>(`${ this.serverUrl }/api/v1/user/username/${ username }`);
   }
 
-  editProfile(user: UserProfile): Observable<UserProfile> {
+  editProfile(user: UserUpdateRequest): Observable<UserProfile> {
     return this.httpClient
       .put<UserProfile>(`${ this.serverUrl }/api/v1/user/private`, user);
   }

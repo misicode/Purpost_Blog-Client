@@ -7,6 +7,12 @@ export interface User {
   role: Role,
 }
 
+export interface UserUpdateRequest {
+  username: string,
+  names: string,
+  surnames: string,
+}
+
 export interface UserProfile {
   email: string,
   names: string,

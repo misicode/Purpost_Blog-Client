@@ -13,6 +13,7 @@ export interface Post {
 }
 
 export interface PostRequest {
+  username: string,
   title: string,
   body: string,
   image: File,
