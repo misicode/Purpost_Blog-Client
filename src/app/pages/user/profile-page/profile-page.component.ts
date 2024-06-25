@@ -1,7 +1,7 @@
-import { Component, OnInit, inject } from "@angular/core";
+import { Component, OnDestroy, OnInit, inject } from "@angular/core";
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { ToastrService } from "ngx-toastr";
-import { switchMap } from "rxjs";
+import { Subject, switchMap, takeUntil } from "rxjs";
 
 import { AuthService } from "../../../core/services/auth.service";
 import { UserService } from "../../../core/services/user.service";
@@ -10,12 +10,13 @@ import { UserService } from "../../../core/services/user.service";
   selector: "user-profile-page",
   templateUrl: "./profile-page.component.html",
 })
-export class ProfilePageComponent implements OnInit {
+export class ProfilePageComponent implements OnInit, OnDestroy {
   private formBuilder = inject(FormBuilder);
   private authService = inject(AuthService);
   private toastrService = inject(ToastrService);
   private userService = inject(UserService);
   private originalProfileForm: any;
+  private destroy$ = new Subject<void>();
   
   public profileForm: FormGroup = this.formBuilder.group({
     names: [{ value: "", disabled: true }, [Validators.required]],
@@ -28,9 +29,15 @@ export class ProfilePageComponent implements OnInit {
     this.getProfile();
   }
 
+  ngOnDestroy() {
+    this.destroy$.next();
+    this.destroy$.complete();
+  }
+
   getProfile() {
     this.authService.authUser.pipe(
-      switchMap(username => this.userService.getProfile(username))
+      switchMap(username => this.userService.getProfile(username)),
+      takeUntil(this.destroy$)
     ).subscribe({
       next: (res) => {
         this.profileForm.patchValue(res);

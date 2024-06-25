@@ -1,6 +1,6 @@
-import { Component, OnInit, inject } from "@angular/core";
+import { Component, OnDestroy, OnInit, inject } from "@angular/core";
 import { ToastrService } from "ngx-toastr";
-import { switchMap } from "rxjs";
+import { Subject, switchMap, takeUntil } from "rxjs";
 
 import { PostService } from "../../../core/services/post.service";
 
@@ -12,10 +12,11 @@ import { AuthService } from "../../../core/services/auth.service";
   templateUrl: "./list-post-page.component.html",
   styleUrl: "./list-post-page.component.scss",
 })
-export class ListPostPageComponent implements OnInit {
+export class ListPostPageComponent implements OnInit, OnDestroy {
   private authService = inject(AuthService);
   private postService = inject(PostService);
   private toastrService = inject(ToastrService);
+  private destroy$ = new Subject<void>();
   
   public isLoading: boolean = true;
   public isOpen: boolean = false;
@@ -26,9 +27,15 @@ export class ListPostPageComponent implements OnInit {
     this.loadPosts();
   }
 
+  ngOnDestroy() {
+    this.destroy$.next();
+    this.destroy$.complete();
+  }
+
   loadPosts() {
     this.authService.authUser.pipe(
-      switchMap(username => this.postService.getPostByUser(username))
+      switchMap(username => this.postService.getPostByUser(username)),
+      takeUntil(this.destroy$)
     ).subscribe((post: Post[]) => {
       this.listPosts = post;
       this.isLoading = false;

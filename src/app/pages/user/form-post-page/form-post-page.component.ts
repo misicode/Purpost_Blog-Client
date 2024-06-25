@@ -1,8 +1,8 @@
-import { Component, OnInit, inject } from "@angular/core";
+import { Component, OnDestroy, OnInit, inject } from "@angular/core";
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { ActivatedRoute, Router } from "@angular/router";
 import { ToastrService } from "ngx-toastr";
-import { switchMap } from "rxjs";
+import { Subject, switchMap, takeUntil } from "rxjs";
 
 import { AuthService } from "../../../core/services/auth.service";
 import { PostService } from "../../../core/services/post.service";
@@ -11,12 +11,13 @@ import { PostService } from "../../../core/services/post.service";
   selector: "user-form-post-page",
   templateUrl: "./form-post-page.component.html",
 })
-export class FormPostPageComponent implements OnInit {
+export class FormPostPageComponent implements OnInit, OnDestroy {
   private formBuilder = inject(FormBuilder);
   private router = inject(Router);
   private authService = inject(AuthService);
   private toastrService = inject(ToastrService);
   private postService = inject(PostService);
+  private destroy$ = new Subject<void>();
   private id = this.activatedRoute.snapshot.paramMap.get("id");
   
   public imageUrl: string = "";
@@ -66,6 +67,11 @@ export class FormPostPageComponent implements OnInit {
     }
   }
 
+  ngOnDestroy() {
+    this.destroy$.next();
+    this.destroy$.complete();
+  }
+
   runPostForm() {
     if(!this.id) {
       this.createPost();
@@ -76,7 +82,8 @@ export class FormPostPageComponent implements OnInit {
 
   createPost() {
     this.authService.authUser.pipe(
-      switchMap(username => this.postService.createPost({ ...this.postForm.value, username }))
+      switchMap(username => this.postService.createPost({ ...this.postForm.value, username })),
+      takeUntil(this.destroy$)
     ).subscribe({
       next: () => {
         this.toastrService.success("La publicación se creó exitosamente");
