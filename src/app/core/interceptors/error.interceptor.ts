@@ -1,28 +1,26 @@
-import { HttpEvent, HttpHandler, HttpInterceptor, HttpRequest } from "@angular/common/http";
-import { Injectable, inject } from "@angular/core";
+import { isPlatformBrowser } from "@angular/common";
+import { HttpInterceptorFn } from "@angular/common/http";
+import { inject, PLATFORM_ID } from "@angular/core";
 import { ToastrService } from "ngx-toastr";
-import { Observable, catchError } from "rxjs";
+import { catchError } from "rxjs";
 
-@Injectable({
-  providedIn: "root"
-})
-export class ErrorInterceptorService implements HttpInterceptor {
-  private toastrService = inject(ToastrService);
+export const errorInterceptor: HttpInterceptorFn = (req, next) => {
+  const toastrService = inject(ToastrService);
+  const platformId = inject(PLATFORM_ID);
 
-  intercept(req: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {
-    return next.handle(req)
-        .pipe(
-          catchError((err) => {
-            if(err.error instanceof ProgressEvent) {
-              this.toastrService.error("Error de conectividad");
-            } else {
-              this.toastrService.error("Error genérico", err.error.message);
-            }
-
-            console.error(err.error);
-            
-            throw err;
-          })
-        );
-  }
-}
+  return next(req)
+    .pipe(
+      catchError((err) => {
+        if (isPlatformBrowser(platformId)) {
+          if (err.error instanceof ProgressEvent) {
+            toastrService.error("Error de conectividad");
+          } else {
+            toastrService.error("Error genérico", err.error.message);
+          }
+        }
+        
+        console.error(err.error);
+        throw err;
+      })
+    );
+};

@@ -2,7 +2,7 @@
 module.exports = {
   configType: "ts",
   content: [
-    "./src/**/*.{html,ts}"
+    "./src/**/*.{html,ts}",
   ],
   theme: {
     extend: {
@@ -10,6 +10,9 @@ module.exports = {
         "indigo": {
           75: "#E7ECFF",
           250: "#BFCCFF",
+        },
+        "secondary": {
+          500: "#070127",
         }
       },
       fontSize: {
@@ -21,4 +24,5 @@ module.exports = {
     },
   },
   plugins: [],
-};
+}
+
