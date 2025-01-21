@@ -1,9 +1,58 @@
-<footer class="py-2.5">
-  <p class="text-center text-white text-xss">
-    ⓒ <span>{{ date | date: "yyyy" }}</span> 
-    Learning and Programming | Coded by 
-    <a href="https://github.com/misicode/Purpost_Blog-Client" target="_blank" rel="noreferrer">
-      MISICODE
+<footer class="max-w-[84rem] mx-auto px-5">
+  <div class="grid grid-cols-[2fr_1fr_1fr] py-8 text-slate-700">
+    <div class="max-w-72 pr-5">
+      <h6 class="font-bold mb-3 text-indigo-700">
+        Acerca de
+      </h6>
+      <p>
+        Red social para crear y publicar artículos de diferente índole
+        con el objetivo de compartir contenido.
+      </p>
+    </div>
+    <div>
+      <h6 class="font-bold mb-3 text-indigo-700">
+        Enlaces
+      </h6>
+      <ul>
+        <li>Inicio</li>
+        <li>Autores</li>
+        <li>Publicaciones</li>
+        <li><span class="pr-1 text-indigo-700">●</span> Más recientes</li>
+        <li><span class="pr-1 text-indigo-700">●</span> Más valoradas</li>
+      </ul>
+    </div>
+    <div>
+      <h6 class="font-bold mb-3 text-indigo-700">
+        Categorías
+      </h6>
+      <ul>
+        <li>Economía</li>
+        <li>Entretenimiento</li>
+        <li>Salud</li>
+        <li>Tecnología</li>
+      </ul>
+    </div>
+  </div>
+  <hr class="border-slate-400">
+  <div class="flex font-bold items-center justify-between opacity-75 py-5 text-xss">
+    <a routerLink="/" class="flex items-center">
+      <span class="bg-indigo-700 flex items-center justify-center px-2.5 py-1 rounded-lg text-white">
+        Pur
+      </span>
+      <span class="text-indigo-700 px-1.5">
+        Post
+      </span>
     </a>
-  </p>
+    <p class="text-slate-500">
+      ⓒ <span>{{ date | date: "yyyy" }}</span> 
+      Aprendiendo y programando | Desarrollado por 
+      <a
+        class="text-indigo-700"
+        href="https://github.com/misicode/Purpost_Blog-Client"
+        target="_blank" rel="noreferrer"
+      >
+        MISICODE
+      </a>
+    </p>
+  </div>
 </footer>
