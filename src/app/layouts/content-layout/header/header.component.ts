@@ -2,6 +2,8 @@ import { CommonModule } from "@angular/common";
 import { Component, inject } from "@angular/core";
 import { Router, RouterLink } from "@angular/router";
 
+import { ToggleThemeComponent } from "./components/toggle-theme/toggle-theme.component";
+
 import { AuthService } from "../../../core/services/auth/auth.service";
 
 @Component({
@@ -9,7 +11,8 @@ import { AuthService } from "../../../core/services/auth/auth.service";
   standalone: true,
   imports: [
     CommonModule,
-    RouterLink
+    RouterLink,
+    ToggleThemeComponent
   ],
   templateUrl: "./header.component.html"
 })
