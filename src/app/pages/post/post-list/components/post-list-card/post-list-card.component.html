@@ -1,4 +1,4 @@
-<div class="before:bg-indigo-700 card hover:border-2 hover:border-indigo-500 hover:border-solid overflow-hidden !pr-16 relative z-0">
+<div class="before:bg-indigo-700 card group hover:border-2 hover:border-indigo-500 hover:border-solid overflow-hidden !pr-16 relative z-0">
   <a [routerLink]="post.idPost">
     <div class="gap-x-8 grid grid-cols-[1fr_2fr]">
       <div class="relative">
@@ -9,7 +9,7 @@
         />
       </div>
       <div>
-        <h3 class="mb-3">
+        <h3 class="group-hover:text-indigo-700 mb-3">
           {{ post.title }}
         </h3>
         <p class="card-post-body mb-4 overflow-hidden text-slate-600 text-sms">

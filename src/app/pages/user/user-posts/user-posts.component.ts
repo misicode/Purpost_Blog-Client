@@ -1,9 +1,8 @@
-import { Component, inject, OnDestroy, OnInit } from "@angular/core";
 import { CommonModule } from "@angular/common";
-import { RouterLink } from "@angular/router";
+import { Component, inject, OnDestroy, OnInit } from "@angular/core";
+import { NgxSkeletonLoaderModule } from "ngx-skeleton-loader";
 import { Subject, switchMap, takeUntil } from "rxjs";
 import { ToastrService } from "ngx-toastr";
-import { NgxSkeletonLoaderModule } from "ngx-skeleton-loader";
 
 import { ModalComponent } from "../../../shared/modal/modal.component";
 
@@ -11,6 +10,7 @@ import { AuthService } from "../../../core/services/auth/auth.service";
 import { PostService } from "../../../core/services/post/post.service";
 
 import { Post } from "../../../core/interfaces/post.interface";
+import { RouterLink } from "@angular/router";
 
 @Component({
   selector: "app-user-posts",

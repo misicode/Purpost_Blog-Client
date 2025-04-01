@@ -1,20 +1,19 @@
-import { CommonModule } from "@angular/common";
-import { Component, inject } from "@angular/core";
-import { Router, RouterLink } from "@angular/router";
+import { Component, inject } from '@angular/core';
+import { Router, RouterLink } from '@angular/router';
 
-import { ToggleThemeComponent } from "./components/toggle-theme/toggle-theme.component";
+import { ToggleThemeComponent } from './components/toggle-theme/toggle-theme.component';
 
-import { AuthService } from "../../../core/services/auth/auth.service";
+import { AuthService } from '../../../core/services/auth/auth.service';
 
 @Component({
-  selector: "app-header",
+  selector: 'app-header',
   standalone: true,
   imports: [
-    CommonModule,
     RouterLink,
     ToggleThemeComponent
   ],
-  templateUrl: "./header.component.html"
+  templateUrl: './header.component.html',
+  styleUrl: './header.component.scss'
 })
 export class HeaderComponent {
   private router = inject(Router);

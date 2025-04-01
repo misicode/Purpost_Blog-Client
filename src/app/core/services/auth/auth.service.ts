@@ -1,12 +1,11 @@
-import { inject, Injectable, PLATFORM_ID } from "@angular/core";
 import { HttpClient } from "@angular/common/http";
-import { isPlatformBrowser } from "@angular/common";
+import { inject, Injectable } from "@angular/core";
 import { BehaviorSubject, map, Observable } from "rxjs";
 import { jwtDecode } from "jwt-decode";
 
-import { LoginResponse } from "../../interfaces/login-response.interface";
-
 import { environment } from "../../../../environments/environment";
+
+import { LoginResponse } from "../../interfaces/login-response.interface";
 
 @Injectable({
   providedIn: "root",
@@ -19,9 +18,7 @@ export class AuthService {
   private readonly serverUrl = `${environment.serverUrl}/api/v1/auth`;
 
   constructor() {
-    if(isPlatformBrowser(inject(PLATFORM_ID))) {
-      this.isAuthenticated();
-    }
+    this.isAuthenticated();
   }
 
   private isAuthenticated() {

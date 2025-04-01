@@ -1,8 +1,17 @@
-@import "tailwindcss/tailwind.css";
-@import "ngx-toastr/toastr";
+@use "tailwindcss";
+@use "ngx-toastr/toastr";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme {
+  --text-xsvs: .8rem;
+  --text-xss: .85rem;
+  --text-smvs: .9rem;
+  --text-sms: .95rem;
+}
 
 button {
-  @apply rounded-lg text-xss;
+  @apply cursor-pointer rounded-lg text-xss;
   padding: .75rem 1.25rem;
   &:hover {
     transition: all 300ms ease-out;

@@ -10,6 +10,7 @@ import { RouterLink } from "@angular/router";
     RouterLink
   ],
   templateUrl: "./footer.component.html",
+  styleUrl: "./footer.component.scss",
 })
 export class FooterComponent {
   public date: Date = new Date();

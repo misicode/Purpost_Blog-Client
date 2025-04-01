@@ -1,11 +1,11 @@
 import { Component, inject, OnDestroy, OnInit } from "@angular/core";
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from "@angular/forms";
+import { RouterLink } from "@angular/router";
 import { Subject, switchMap, takeUntil } from "rxjs";
 import { ToastrService } from "ngx-toastr";
 
 import { AuthService } from "../../../core/services/auth/auth.service";
 import { UserService } from "../../../core/services/user/user.service";
-import { RouterLink } from "@angular/router";
 
 @Component({
   selector: "app-user-profile",

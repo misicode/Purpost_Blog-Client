@@ -1,19 +1,20 @@
-import { Component, OnInit } from "@angular/core";
-import { ActivatedRoute, Router } from "@angular/router";
-import { CommonModule } from "@angular/common";
-import { switchMap } from "rxjs";
+import { ActivatedRoute, Router } from '@angular/router';
+import { CommonModule } from '@angular/common';
+import { Component, OnInit } from '@angular/core';
+import { switchMap } from 'rxjs';
 
-import { Post } from "../../../core/interfaces/post.interface";
-import { PostService } from "../../../core/services/post/post.service";
+import { PostService } from '../../../core/services/post/post.service';
+
+import { Post } from '../../../core/interfaces/post.interface';
 
 @Component({
-  selector: "app-post-detail",
+  selector: 'app-post-detail',
   standalone: true,
   imports: [
     CommonModule
   ],
-  templateUrl: "./post-detail.component.html",
-  styleUrl: "./post-detail.component.scss",
+  templateUrl: './post-detail.component.html',
+  styleUrl: './post-detail.component.scss'
 })
 export class PostDetailComponent implements OnInit {
   public post?: Post;

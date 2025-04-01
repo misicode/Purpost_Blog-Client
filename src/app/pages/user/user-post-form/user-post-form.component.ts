@@ -1,6 +1,6 @@
+import { ActivatedRoute, Router, RouterLink } from "@angular/router";
 import { Component, inject, OnDestroy, OnInit } from "@angular/core";
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from "@angular/forms";
-import { ActivatedRoute, Router, RouterLink } from "@angular/router";
 import { Subject, switchMap, takeUntil } from "rxjs";
 import { ToastrService } from "ngx-toastr";
 
@@ -18,7 +18,7 @@ import { PostService } from "../../../core/services/post/post.service";
     SpinnerComponent
   ],
   templateUrl: "./user-post-form.component.html",
-  styleUrl: "./user-post-form.component.scss",
+  styleUrl: "./user-post-form.component.scss"
 })
 export class UserPostFormComponent implements OnInit, OnDestroy {
   private formBuilder = inject(FormBuilder);

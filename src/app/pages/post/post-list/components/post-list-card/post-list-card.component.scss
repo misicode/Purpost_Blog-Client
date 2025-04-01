@@ -15,9 +15,6 @@
   &:hover {
     cursor: pointer;
     transition: all 300ms ease-out;
-    h3 {
-      @apply text-indigo-700;
-    }
   }
   &:hover:before {
     transform: scale(4.5);

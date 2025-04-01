@@ -2,15 +2,16 @@ import { Component, inject } from "@angular/core";
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from "@angular/forms";
 import { Router } from "@angular/router";
 
-import { AuthService } from "../../../core/services/auth/auth.service";
 import { SpinnerComponent } from "../../../shared/spinner/spinner.component";
+
+import { AuthService } from "../../../core/services/auth/auth.service";
 
 @Component({
   selector: "app-auth-login",
   standalone: true,
   imports: [
-    SpinnerComponent,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    SpinnerComponent
   ],
   templateUrl: "./auth-login.component.html",
   styleUrl: "./auth-login.component.scss",

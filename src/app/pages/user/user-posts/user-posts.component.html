@@ -15,23 +15,30 @@
   <table class="bg-white border-collapse overflow-hidden rounded-lg w-full">
     <thead class="bg-indigo-250 text-indigo-900">
       <tr>
-        <th scope="col">N°</th>
-        <th scope="col">Título</th>
-        <th scope="col">Fecha</th>
-        <th scope="col">Acciones</th>
+        <th class="px-4 py-5" scope="col">N°</th>
+        <th class="px-4 py-5" scope="col">Título</th>
+        <th class="px-4 py-5" scope="col">Fecha</th>
+        <th class="px-4 py-5" scope="col">Acciones</th>
       </tr>
     </thead>
     <tbody class="relative">
       @defer(when !isLoading) {
         @for (post of listPosts; track post.idPost; let i = $index) {
           <tr>
-            <td>{{ i + 1 }}</td>
-            <td>{{ post.title }}</td>
-            <td>{{ post.createdAt | date: "dd/MM/yyyy" }}</td>
-            <td>
+            <td class="border-t border-slate-200 border-solid px-4 py-2 text-center text-smvs">
+              {{ i + 1 }}
+            </td>
+            <td class="border-t border-slate-200 border-solid px-4 py-2 text-center text-smvs">
+              {{ post.title }}
+            </td>
+            <td class="border-t border-slate-200 border-solid px-4 py-2 text-center text-smvs">
+              {{ post.createdAt | date: "dd/MM/yyyy" }}
+            </td>
+            <td class="border-t border-slate-200 border-solid px-4 py-2 text-center text-smvs">
               <a [routerLink]="['/user/posts', post.idPost]" class="mr-1.5">
-                <button class="!bg-blue-500 hover:!bg-blue-400">
+                <button class="!bg-blue-500 bg-rose-500 hover:!bg-blue-400 hover:bg-rose-400 px-2.5 py-2 text-white">
                   <svg
+                    class="h-4 w-4"
                     fill="currentColor"
                     viewBox="0 0 24 24"
                     xmlns="http://www.w3.org/2000/svg"
@@ -41,8 +48,9 @@
                   </svg>
                 </button>
               </a>
-              <button (click)="openModal(post.idPost)">
+              <button (click)="openModal(post.idPost)" class="bg-rose-500 hover:bg-rose-400 px-2.5 py-2 text-white">
                 <svg
+                  class="h-4 w-4"
                   fill="currentColor"
                   viewBox="0 0 24 24"
                   xmlns="http://www.w3.org/2000/svg"
@@ -59,17 +67,17 @@
           </p>
           @for (_ of [].constructor(8); track $index) {
             <tr>
-              <td class="!py-6"></td>
-              <td class="!py-6"></td>
-              <td class="!py-6"></td>
-              <td class="!py-6"></td>
+              <td class="border-t border-slate-200 border-solid px-4 py-6 text-center text-smvs"></td>
+              <td class="border-t border-slate-200 border-solid px-4 py-6 text-center text-smvs"></td>
+              <td class="border-t border-slate-200 border-solid px-4 py-6 text-center text-smvs"></td>
+              <td class="border-t border-slate-200 border-solid px-4 py-6 text-center text-smvs"></td>
             </tr>
           }
         }
       } @placeholder {
         @for (_ of [].constructor(8); track $index) {
           <tr>
-            <td class="!py-3.5">
+            <td class="border-t border-slate-200 border-solid px-4 py-3.5 text-center text-smvs">
               <ngx-skeleton-loader
                 count="1"
                 [theme]="{
@@ -78,7 +86,7 @@
                 }"
               ></ngx-skeleton-loader>
             </td>
-            <td class="!py-3.5">
+            <td class="border-t border-slate-200 border-solid px-4 py-3.5 text-center text-smvs">
               <ngx-skeleton-loader
                 count="1"
                 [theme]="{
@@ -87,7 +95,7 @@
                 }"
               ></ngx-skeleton-loader>
             </td>
-            <td class="!py-3.5">
+            <td class="border-t border-slate-200 border-solid px-4 py-3.5 text-center text-smvs">
               <ngx-skeleton-loader
                 count="1"
                 [theme]="{
@@ -96,7 +104,7 @@
                 }"
               ></ngx-skeleton-loader>
             </td>
-            <td class="!py-3.5">
+            <td class="border-t border-slate-200 border-solid px-4 py-3.5 text-center text-smvs">
               <ngx-skeleton-loader
                 count="1"
                 [theme]="{

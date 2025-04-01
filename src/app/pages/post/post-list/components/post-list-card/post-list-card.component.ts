@@ -1,18 +1,18 @@
-import { Component, Input, OnInit } from "@angular/core";
-import { CommonModule } from "@angular/common";
-import { RouterLink } from "@angular/router";
+import { CommonModule } from '@angular/common';
+import { Component, Input, OnInit } from '@angular/core';
+import { RouterLink } from '@angular/router';
 
-import { Post } from "../../../../../core/interfaces/post.interface";
+import { Post } from '../../../../../core/interfaces/post.interface';
 
 @Component({
-  selector: "app-post-list-card",
+  selector: 'app-post-list-card',
   standalone: true,
   imports: [
     CommonModule,
     RouterLink
   ],
-  templateUrl: "./post-list-card.component.html",
-  styleUrl: "./post-list-card.component.scss",
+  templateUrl: './post-list-card.component.html',
+  styleUrl: './post-list-card.component.scss'
 })
 export class PostListCardComponent implements OnInit {
   @Input()

@@ -1,19 +1,19 @@
-import { isPlatformBrowser } from "@angular/common";
-import { inject, Injectable, PLATFORM_ID } from "@angular/core";
+import { Injectable } from "@angular/core";
 
 @Injectable({
   providedIn: "root",
 })
 export class ThemeService {
-  private platformId = inject(PLATFORM_ID);
   private themeKey = "theme";
 
+  constructor() {
+    this.loadTheme();
+  }
+
   toggleTheme(): void {
-    if(isPlatformBrowser(this.platformId)) {
-      const currentTheme = this.getTheme();
-      const newTheme = (currentTheme === "light") ? "dark" : "light";
-      this.setTheme(newTheme);
-    }
+    const currentTheme = this.getTheme();
+    const newTheme = (currentTheme === "light") ? "dark" : "light";
+    this.setTheme(newTheme);
   }
 
   getTheme(): string {
@@ -27,5 +27,10 @@ export class ThemeService {
     bodyElement.classList.add(theme);
 
     localStorage.setItem(this.themeKey, theme);
+  }
+
+  private loadTheme(): void {
+    const currentTheme = this.getTheme();
+    this.setTheme(currentTheme);
   }
 }
