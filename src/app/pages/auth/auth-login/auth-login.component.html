@@ -3,53 +3,65 @@
     [formGroup]="loginForm"
     (ngSubmit)="login()"
   >
-    <div class="card gap-y-8 grid max-w-sm mx-auto">
-      <h2 class="font-bold pb-2 text-3xl text-center text-indigo-700">
-        BIENVENIDO
-      </h2>
-      <div>
-        <label for="account">
-          Usuario o correo electrónico
-        </label>
-        <div class="input-item-box">
-          <input 
-            class="input-item"
-            formControlName="account"
-            id="account"
-            name="account"
-            type="text"
-            required
-          />
-        </div>
-      </div>
-      <div>
-        <label for="password">
-          Contraseña
-        </label>
-        <div class="input-item-box">
-          <input
-            class="input-item"
-            formControlName="password"
-            id="password"
-            name="password"
-            type="password"
-            required
-          />
-        </div>
-      </div>
-      <div>
-        <button
-          class="btn-success disabled:bg-indigo-400 disabled:hover:bg-indigo-400 w-full"
-          [disabled]="loginForm.invalid"
-          type="submit"
+    <div class="card max-w-sm mx-auto">
+      <div class="flex flex-col items-center pb-8">
+        <svg
+          class="h-10 w-10"
+          fill="none"
+          height="350"
+          viewBox="0 0 350 350"
+          width="350"
+          xmlns="http://www.w3.org/2000/svg"
         >
-          Ingresar
-        </button>
+          <rect width="350" height="350" rx="75" fill="#432DD7"/>
+          <path d="M119.097 261V100H188.557C198.677 100 207.647 102.3 215.467 106.9C223.441 111.5 229.727 117.787 234.327 125.76C239.081 133.733 241.457 142.703 241.457 152.67C241.457 163.097 239.081 172.45 234.327 180.73C229.727 188.857 223.441 195.297 215.467 200.05C207.647 204.803 198.677 207.18 188.557 207.18H158.197V261H119.097ZM157.507 172.91H183.037C186.411 172.91 189.477 172.067 192.237 170.38C194.997 168.693 197.221 166.393 198.907 163.48C200.594 160.567 201.437 157.193 201.437 153.36C201.437 149.373 200.594 146 198.907 143.24C197.221 140.48 194.997 138.333 192.237 136.8C189.477 135.267 186.411 134.5 183.037 134.5H157.507V172.91Z" fill="white"/>
+        </svg>
+        <h2 class="dark:text-indigo-600 font-bold py-4 text-3xl text-indigo-700">
+          Bienvenido
+        </h2>
       </div>
-      
-      <p class="border-indigo-100 border-solid border-t-2 pt-6 text-center text-smvs">
+      <div class="gap-y-7 grid">
+        <div>
+          <label for="account">
+            Usuario o correo electrónico
+          </label>
+          <div class="input-item-box">
+            <input 
+              class="input-item"
+              formControlName="account"
+              id="account"
+              name="account"
+              type="text"
+              required
+            />
+          </div>
+        </div>
+        <div>
+          <label for="password">
+            Contraseña
+          </label>
+          <div class="input-item-box">
+            <input
+              class="input-item"
+              formControlName="password"
+              id="password"
+              name="password"
+              type="password"
+              required
+            />
+          </div>
+        </div>
+      </div>
+      <button
+        class="btn-success disabled:bg-indigo-400 disabled:hover:bg-indigo-400 my-10 w-full"
+        [disabled]="loginForm.invalid"
+        type="submit"
+      >
+        Ingresar
+      </button>
+      <p class="border-slate-200 border-solid border-t-2 dark:border-slate-800 pt-6 text-center text-smvs">
         ¿No tienes una cuenta?
-        <a routerLink="../register" class="font-medium text-indigo-700 hover:text-indigo-500">
+        <a routerLink="../register" class="dark:text-indigo-600 font-medium text-indigo-700 hover:cursor-pointer hover:text-indigo-500">
           Regístrate
         </a>
       </p>

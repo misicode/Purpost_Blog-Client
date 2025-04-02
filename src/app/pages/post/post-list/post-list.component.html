@@ -5,16 +5,18 @@
     @for (_ of [].constructor(2); track $index) {
       <div class="card gap-x-8 grid grid-cols-[1fr_2fr] h-[18.5rem] !pr-16">
         <ngx-skeleton-loader
+          class="dark:text-slate-900 text-slate-200"
           count="1"
           [theme]="{
-            'background-color': '#eef2ff',
+            'background-color': 'currentColor',
             height: '100%',
           }"
         ></ngx-skeleton-loader>
         <ngx-skeleton-loader
+          class="dark:text-slate-900 text-slate-200"
           count="1"
           [theme]="{
-            'background-color': '#eef2ff',
+            'background-color': 'currentColor',
             height: '100%',
           }"
         ></ngx-skeleton-loader>
