@@ -1,24 +1,39 @@
 <section>
+  <a class="cursor-pointer flex mb-5" routerLink="/">
+    <p class="bg-indigo-700 mr-2 px-2 rounded-lg text-white">🠀</p>
+    <p>Regresar</p>
+  </a>
   @if (post) {
-    <div class="card !px-14 !py-10">
-      <h3 class="font-medium pb-8 text-xl text-center text-indigo-800">
-        {{ post.title }}
-      </h3>
-      <div class="border-b-2 border-indigo-100 border-solid pb-8">
-        <img
-          class="block max-w-[80%] mx-auto"
-          [src]="post.image.url"
-          [alt]="post.image.name"
-        />
-      </div>
-      <div class="flex justify-between mb-8 mt-4 text-xss">
-        <p>
-          {{ post.user.names + " " + post.user.surnames }}
-        </p>
-        <p>
+    <div>
+      <img
+        class="h-40 md:h-80 object-cover rounded-t-lg w-full"
+        [src]="post.image.url"
+        [alt]="post.image.name"
+      />
+    </div>
+    <div class="!border-t-0 !pb-6 !px-6 !rounded-none !rounded-b-lg card md:!pb-10 md:!px-14">
+      <div class="flex justify-between mb-8 text-slate-500">
+        <div class="flex">
+          <div class="h-6 mr-2 overflow-hidden rounded-full w-6">
+            <svg
+              class="bg-indigo-100 h-full text-indigo-700 w-full"
+              fill="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path d="M24 20.993V24H0v-2.996A14.977 14.977 0 0112.004 15c4.904 0 9.26 2.354 11.996 5.993zM16.002 8.999a4 4 0 11-8 0 4 4 0 018 0z"></path>
+            </svg>
+          </div>
+          <p class="text-smvs">
+            {{ post.user.names + " " + post.user.surnames }}
+          </p>
+        </div>
+        <p class="text-xss">
           {{ post.createdAt | date:"M/d/yy, h:mm a" }}
         </p>
       </div>
+      <h1 class="font-medium md:pb-8 md:text-3xl pb-6 text-[1.7rem] text-center text-indigo-700">
+        {{ post.title }}
+      </h1>
       <p class="whitespace-pre-line">
         {{ post.body }}
       </p>

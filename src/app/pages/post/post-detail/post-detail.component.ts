@@ -1,4 +1,4 @@
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { switchMap } from 'rxjs';
@@ -11,7 +11,8 @@ import { Post } from '../../../core/interfaces/post.interface';
   selector: 'app-post-detail',
   standalone: true,
   imports: [
-    CommonModule
+    CommonModule,
+    RouterLink
   ],
   templateUrl: './post-detail.component.html',
   styleUrl: './post-detail.component.scss'
