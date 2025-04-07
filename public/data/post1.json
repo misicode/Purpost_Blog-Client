@@ -1,0 +1,20 @@
+{
+  "idPost": "0001",
+  "title": "🧠 SOMA: cuando el terror cuestiona lo que significa ser",
+  "body": "SOMA no es solo un juego de terror; es una experiencia filosófica que te deja pensando mucho después de apagar la consola. Desarrollado por Frictional Games, los creadores de Amnesia, este título combina el suspenso psicológico con preguntas profundas sobre la identidad, la conciencia y lo que realmente significa 'ser'.\n\nLa historia se sitúa en una instalación submarina postapocalíptica, pero el verdadero miedo no viene de los monstruos, sino de las decisiones morales y existenciales que el juego te plantea. ¿Qué pasa si tu mente puede existir sin tu cuerpo? ¿Eres tú o solo una copia? SOMA juega con esta idea una y otra vez, empujándote al límite de tu comprensión sobre la vida y la muerte.\n\nVivimos en una era donde la inteligencia artificial, la realidad virtual y los experimentos con interfaces cerebro-máquina ya están en desarrollo. SOMA, desde su ficción, actúa como una advertencia filosófica: la tecnología avanza, pero ¿estamos preparados para lidiar con sus implicaciones éticas y existenciales?\n\nMás allá del terror y la ciencia ficción, SOMA nos recuerda que el alma humana, si es que existe, no se mide en bits ni se guarda en discos duros. Nos recuerda que aún en un mundo digitalizado, la conciencia es un misterio que no se puede simplificar... pero sí se puede cuestionar.",
+  "user": {
+    "email": "liadata@gmail.com",
+    "names": "Lucía",
+    "surnames": "Resamo",
+    "role": {
+      "name": "ROLE_USER"
+    }
+  },
+  "image": {
+    "name": "Imagen de SOMA",
+    "url": "https://cdna.artstation.com/p/assets/images/images/019/617/726/large/egor-belyakov-compositeglitch.jpg?1564303305"
+  },
+  "createdAt": "2025-02-14T01:36:19.322",
+  "updatedAt": "2025-04-02T23:16:46.497",
+  "active": true
+}

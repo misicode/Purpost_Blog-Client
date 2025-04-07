@@ -32,7 +32,7 @@ export class PostDetailComponent implements OnInit {
         switchMap( ({ id }) => this.postService.getPostById(id) )
       ).subscribe(
         post => {
-          if (!post) return this.router.navigateByUrl("/posts");
+          if(!post) return this.router.navigateByUrl("/posts");
 
           this.post = post;
 

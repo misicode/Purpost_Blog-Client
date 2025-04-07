@@ -3,7 +3,7 @@
     <app-post-list-card [post]="post"></app-post-list-card>
   } @empty {
     @for (_ of [].constructor(2); track $index) {
-      <div class="card gap-x-8 grid grid-cols-[1fr_2fr] h-[18.5rem] !pr-16">
+      <div class="card gap-x-8 gap-y-6 grid h-[27rem] md:!pr-16 md:grid-cols-[1fr_2fr] md:h-[18.5rem]">
         <ngx-skeleton-loader
           class="dark:text-slate-900 text-slate-200"
           count="1"

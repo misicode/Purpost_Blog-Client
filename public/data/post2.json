@@ -1,0 +1,20 @@
+{
+  "idPost": "0002",
+  "title": "🎧 Joji: emociones crudas convertidas en música",
+  "body": "Joji ha logrado algo que pocos artistas pueden: transformar la vulnerabilidad en arte. Su música, una mezcla de R&B, lo-fi y pop experimental, transmite una honestidad emocional que conecta con miles de personas alrededor del mundo. Canciones como Slow Dancing in the Dark o Glimpse of Us no solo suenan bien, sino que se sienten profundamente.\n\nLo más interesante de Joji es su evolución. Pasó de ser una figura cómica en internet a un músico serio y respetado, sin perder su autenticidad. Su cambio refleja cómo todos podemos reinventarnos, explorar nuevas facetas y crecer sin dejar atrás nuestra esencia.\n\nSu estilo no busca complacer a todos; es introspectivo, a veces melancólico, pero siempre sincero. Escucharlo es como abrir un diario íntimo que habla de amores fallidos, soledad, esperanza y dudas existenciales. Es música para momentos en los que necesitamos sentir, no solo distraernos.\n\nJoji no solo canta, Joji acompaña. Su arte es refugio para quienes buscan una voz que traduzca lo que sienten y no saben cómo expresar. En un mundo tan ruidoso, su sonido íntimo y atmosférico se vuelve un espacio de calma y conexión.",
+  "user": {
+    "email": "martinbm@gmail.com",
+    "names": "Martin",
+    "surnames": "Espinoza",
+    "role": {
+      "name": "ROLE_USER"
+    }
+  },
+  "image": {
+    "name": "Imagen de Joji",
+    "url": "https://akamai.sscdn.co/tb/letras-blog/wp-content/uploads/2022/07/66f7824-quem-e-joji.jpg"
+  },
+  "createdAt": "2025-03-26T01:36:19.322",
+  "updatedAt": "2025-04-02T23:16:46.497",
+  "active": true
+}
